@@ -1,11 +1,6 @@
 import DefaultTheme from 'vitepress/theme'
 import './custom.css'
 
-import Home from './components/Home.vue'
+import 'uno.css'
 
-export default {
-  ...DefaultTheme,
-  enhanceApp({app}) {
-    app.component('Home', Home)
-  }
-}
+export default DefaultTheme
