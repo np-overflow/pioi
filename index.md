@@ -1,9 +1,16 @@
 ---
-layout: page
+layout: home
 
 hero:
   name: Poly-ITE Infomatics Olympiad
-  text: A 5-hour informatics Olympiad open to all polytechnic and ITE students.
+  tagline: A 5-hour informatics Olympiad open to all polytechnic and ITE students.
+  actions:
+  - theme: brand
+    text: Register now!
+    link: /
+  - theme: alt
+    text: Learn more
+    link: /about
 
 about:
   - title: About PIOI 
@@ -33,8 +40,8 @@ features:
     link: /competition
 ---
 
-<script setup>
+<!-- <script setup>
   import Home from './components/Home.vue'
 </script>
 
-<Home/>
+<Home/> -->
