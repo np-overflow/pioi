@@ -30,12 +30,13 @@ onKeyStroke('w', (e) => {
 		</div>
 		<div class="mx-auto max-w-7xl p-8 flex flex-col items-center">
 			<Section>
-				<div class="rounded-lg w-[640px] h-[480px] bg-cover bg-[url(https://support.hackerrank.com/hc/article_attachments/1500013934961/Task_Description.JPG)]" />
-				<div class="ml-8 flex flex-col">
-					<h2 class="text-xl text-center">
+				<div class="rounded-xl w-[640px] h-[480px] bg-cover bg-[url(https://support.hackerrank.com/hc/article_attachments/1500013934961/Task_Description.JPG)]" />
+				<div class="pl-12 pt-12 flex flex-col gap-2">
+					<Icon size="32" name="charm:code" />
+					<h2 class="ml-1 text-3xl text-left">
 						Contest Platform <br> & Languages
 					</h2>
-					<div class="grid grid-cols-2 w-fit gap-4 mt-auto">
+					<GlowWrapper class="grid grid-cols-2 w-fit gap-4 mt-auto">
 						<NuxtLink to="https://www.python.org/">
 							<Card class="h-24 w-32">
 								<div class="p-4 h-full flex items-center justify-center text-sm font-bold gap-4">
@@ -68,7 +69,7 @@ onKeyStroke('w', (e) => {
 								</div>
 							</Card>
 						</NuxtLink>
-					</div>
+					</GlowWrapper>
 				</div>
 			</Section>
 			<Section>
@@ -83,7 +84,7 @@ onKeyStroke('w', (e) => {
 							that you can learn the basics of competitive programming!
 						</p>
 					</h2>
-					<div class="grid grid-cols-2 w-fit gap-4 mx-auto">
+					<GlowWrapper class="grid grid-cols-2 w-fit gap-4 mx-auto">
 						<Card class="w-72">
 							<div class="p-4 flex flex-col justify-center gap-2">
 								<div class="flex items-center gap-2 text-sm font-bold">
@@ -144,7 +145,7 @@ onKeyStroke('w', (e) => {
 								</p>
 							</div>
 						</Card>
-					</div>
+					</GlowWrapper>
 					<div class="inline-flex justify-end">
 						<Button class="text-white/70" @click="goToWorkshopRegistration">
 							Join <span class="rounded w-4 h-4 bg-white text-black font-semibold text-center">W</span>

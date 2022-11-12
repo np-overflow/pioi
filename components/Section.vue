@@ -12,7 +12,7 @@ const {
 
 <template>
 	<div ref="target" class="flex h-screen m-auto">
-		<div ref="section" class="w-fit my-auto slider h-fit relative overflow-hidden px-12 py-8 flex rounded-md border-gray-300 bg-[#444]">
+		<div ref="section" class="w-fit my-auto slider h-fit relative overflow-hidden px-12 py-8 flex rounded-xl border-gray-300 bg-[#444]">
 			<slot />
 		</div>
 	</div>
