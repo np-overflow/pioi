@@ -1,18 +1,18 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
-	title?: string
-}>(), {
-	title: 'Lorem Ipsum',
-})
-
-const {
-	title,
-} = toRefs(props)
 </script>
 
 <template>
 	<div ref="target" class="flex lg:h-screen w-full justify-center">
-		<div ref="section" class="w-full lg:w-fit m-auto section h-fit relative overflow-hidden mx-2 px-2 xs:px-3 sm:px-12 py-4 sm:py-8 flex rounded-xl border-gray-300 bg-[#444]">
+		<div
+			ref="section"
+			class="
+			section relative overflow-hidden rounded-xl
+			w-full lg:w-fit h-fit
+			px-2 xs:px-3 sm:px-12
+			py-4 sm:py-8 flex
+			mx-2
+			border-gray-300 bg-[#444]"
+		>
 			<slot />
 		</div>
 	</div>
