@@ -1,10 +1,9 @@
 <script setup lang="ts">
 const target = ref(null)
-const { elementX, elementY } = useMouseInElement(target)
 </script>
 
 <template>
-	<div ref="target" class="glow cursor-pointer flex relative rounded-md bg-[#444]" :style="{ '--x': `${elementX}px`, '--y': `${elementY}px` }">
+	<div ref="target" class="glow cursor-pointer flex relative rounded-md bg-[#444]">
 		<div class="content">
 			<slot />
 		</div>
