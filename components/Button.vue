@@ -4,7 +4,7 @@ const { elementX, elementY } = useMouseInElement(target)
 </script>
 
 <template>
-	<div ref="target" class="button cursor-pointer flex relative rounded-md bg-[#444]" :style="{ '--x': `${elementX}px`, '--y': `${elementY}px` }">
+	<div ref="target" class="glow cursor-pointer flex relative rounded-md bg-[#444]" :style="{ '--x': `${elementX}px`, '--y': `${elementY}px` }">
 		<div class="content">
 			<slot />
 		</div>
@@ -12,7 +12,7 @@ const { elementX, elementY } = useMouseInElement(target)
 </template>
 
 <style scoped>
-.button::before {
+.glow::before {
     @apply content-default absolute inset-0;
     background: radial-gradient(6rem circle at var(--x) var(--y),hsla(0,0%,100%,.5),transparent 40%);
     border-radius: inherit;
