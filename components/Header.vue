@@ -1,12 +1,15 @@
 <script setup lang="ts">
-const goEventRegistration = () => {
+const goToEventRegistration = () => {
 	navigateTo('https://forms.office.com/r/9vBBguvmtK', {
 		external: true,
 	})
 }
 
-onKeyStroke('j', (e) => {
-	goEventRegistration()
+const { tab, j } = useMagicKeys()
+
+watchEffect(() => {
+	if (tab.value && j.value)
+		goToEventRegistration()
 })
 </script>
 
@@ -20,8 +23,10 @@ onKeyStroke('j', (e) => {
 					</div>
 				</div>
 				<div class="inline-flex justify-end w-1/2">
-					<Button class="text-white/70" @click="goEventRegistration">
-						Join <span class="rounded w-4 h-4 bg-white text-black font-semibold text-center">J</span>
+					<Button class="text-white/70" @click="goToEventRegistration">
+						Join
+						<span class="rounded px-1 w-fit h-4 bg-white text-black font-semibold text-center">Tab</span>
+						<span class="rounded w-4 h-4 bg-white text-black font-semibold text-center">J</span>
 					</Button>
 				</div>
 			</div>

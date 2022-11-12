@@ -5,8 +5,11 @@ const goToWorkshopRegistration = () => {
 	})
 }
 
-onKeyStroke('w', (e) => {
-	goToWorkshopRegistration()
+const { tab, w } = useMagicKeys()
+
+watchEffect(() => {
+	if (tab.value && w.value)
+		goToWorkshopRegistration()
 })
 </script>
 
@@ -157,7 +160,9 @@ onKeyStroke('w', (e) => {
 						</div>
 						<div class="inline-flex justify-end">
 							<Button class="text-white/70" @click="goToWorkshopRegistration">
-								Join <span class="rounded w-4 h-4 bg-white text-black font-semibold text-center">W</span>
+								Join
+								<span class="rounded px-1 w-fit h-4 bg-white text-black font-semibold text-center">Tab</span>
+								<span class="rounded w-4 h-4 bg-white text-black font-semibold text-center">W</span>
 							</Button>
 						</div>
 					</div>
