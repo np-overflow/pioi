@@ -4,14 +4,11 @@
 
 <template>
 	<div class="max-w-7xl mx-auto">
-		<footer class="footer items-center p-4">
-			<div class="items-center grid-flow-col">
-				<div class="rounded-full p-2 logo">
-					<img src="/logo.svg" alt="logo" class="w-5 h-5 -rotate-[15deg]">
-				</div>
-				<p>Copyright © 2022 - All right reserved</p>
+		<footer class="w-full flex items-center p-4">
+			<div class="w-1/2 inline-flex text-xs items-center gap-2">
+				<p>Copyright © 2022 - All rights reserved</p>
 			</div>
-			<div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+			<div class="w-1/2 inline-flex justify-end gap-4">
 				<NuxtLink to="mailto:np.ict.overflow@gmail.com">
 					<Icon size="24" name="line-md:email" />
 				</NuxtLink>

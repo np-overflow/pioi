@@ -14,14 +14,14 @@ onKeyStroke('w', (e) => {
 	<div class="relative m-auto">
 		<!-- <TheHeroCircle /> -->
 		<!-- <div class="pt-16 sm:pt-32" /> -->
+		<Header />
 		<GlowWrapper>
-			<Header />
 			<div id="hero" class="grid h-screen">
 				<div class="my-auto">
 					<h1 class="relative text-center text-2xl sm:text-6xl text-white font-bold">
 						Welcome to PIOI
 					</h1>
-					<h2 class="mt-4 text-center text-[#8a8c93] italic">
+					<h2 class="mt-4 text-center text-[#8a8c93] italic px-2 xs:px-4 sm:px-0">
 						<span class="font-bold">The</span> informatics olympiad for polytechnic and ITE students
 					</h2>
 					<div class="relative mx-auto max-w-4xl">
@@ -30,53 +30,57 @@ onKeyStroke('w', (e) => {
 				</div>
 			</div>
 		</GlowWrapper>
-		<div class="mx-auto max-w-7xl p-8 flex flex-col items-center">
-			<GlowWrapper>
+		<div class="mx-auto max-w-7xl p-2 sm:p-8 flex flex-col items-center gap-16 lg:gap-0">
+			<GlowWrapper class="w-full">
 				<Section>
-					<div class="rounded-xl w-[640px] h-[480px] bg-cover bg-[url(https://support.hackerrank.com/hc/article_attachments/1500013934961/Task_Description.JPG)]" />
-					<div class="pl-12 pt-12 flex flex-col gap-2">
-						<Icon size="32" name="charm:code" />
-						<h2 class="ml-1 text-3xl text-left">
-							Contest Platform <br> & Languages
-						</h2>
-						<div class="grid grid-cols-2 w-fit gap-4 mt-auto">
-							<NuxtLink to="https://www.python.org/">
-								<Card class="h-24 w-32">
-									<div class="p-4 h-full flex items-center justify-center text-sm font-bold gap-4">
-										<Icon size="20" name="fa6-brands:python" />
-										Python
-									</div>
-								</Card>
-							</NuxtLink>
-							<NuxtLink to="https://docs.oracle.com/en/java/">
-								<Card class="h-24 w-32">
-									<div class="p-4 h-full flex items-center justify-center text-sm font-bold gap-4">
-										<Icon size="24" name="la:java" />
-										Java
-									</div>
-								</Card>
-							</NuxtLink>
-							<NuxtLink to="https://en.cppreference.com/w/">
-								<Card class="h-24 w-32">
-									<div class="p-4 h-full flex items-center justify-center text-sm font-bold gap-4">
-										<Icon size="20" name="file-icons:c" />
-										C++
-									</div>
-								</Card>
-							</NuxtLink>
-							<NuxtLink to="https://go.dev/">
-								<Card class="h-24 w-32">
-									<div class="p-4 h-full flex items-center justify-center text-sm font-bold gap-4">
-										<Icon size="24" name="file-icons:go" />
-										GoLang
-									</div>
-								</Card>
-							</NuxtLink>
+					<div class="flex flex-col-reverse lg:flex-row w-full">
+						<div class="mt-4 sm:mt-8 rounded-lg w-full lg:w-[640px] aspect-[1.33/1] bg-cover bg-[url(https://support.hackerrank.com/hc/article_attachments/1500013934961/Task_Description.JPG)]" />
+						<div class="sm:pl-12 sm:pt-12 flex flex-col gap-2 items-center lg:items-stretch">
+							<div class="flex md:flex-col items-center gap-2">
+								<Icon size="32" name="charm:code" />
+								<h2 class="ml-1 text-2xl sm:text-3xl text-left">
+									Contest Platform <br> & Languages
+								</h2>
+							</div>
+							<div class="grid grid-cols-2 w-fit gap-4 mt-4 sm:mt-auto">
+								<NuxtLink to="https://www.python.org/">
+									<Card class="h-24 md:w-32">
+										<div class="p-4 h-full flex items-center justify-center text-sm font-bold gap-4">
+											<Icon size="20" name="fa6-brands:python" />
+											Python
+										</div>
+									</Card>
+								</NuxtLink>
+								<NuxtLink to="https://docs.oracle.com/en/java/">
+									<Card class="h-24 md:w-32">
+										<div class="p-4 h-full flex items-center justify-center text-sm font-bold gap-4">
+											<Icon size="24" name="la:java" />
+											Java
+										</div>
+									</Card>
+								</NuxtLink>
+								<NuxtLink to="https://en.cppreference.com/w/">
+									<Card class="h-24 md:w-32">
+										<div class="p-4 h-full flex items-center justify-center text-sm font-bold gap-4">
+											<Icon size="20" name="file-icons:c" />
+											C++
+										</div>
+									</Card>
+								</NuxtLink>
+								<NuxtLink to="https://go.dev/">
+									<Card class="h-24 md:w-32">
+										<div class="p-4 h-full flex items-center justify-center text-sm font-bold gap-4">
+											<Icon size="24" name="file-icons:go" />
+											GoLang
+										</div>
+									</Card>
+								</NuxtLink>
+							</div>
 						</div>
 					</div>
 				</Section>
 			</GlowWrapper>
-			<GlowWrapper>
+			<GlowWrapper class="w-full">
 				<Section>
 					<div class="flex flex-col gap-8 mx-auto">
 						<h2 class="text-xl text-center">
@@ -89,8 +93,8 @@ onKeyStroke('w', (e) => {
 								that you can learn the basics of competitive programming!
 							</p>
 						</h2>
-						<div class="grid grid-cols-2 w-fit gap-4 mx-auto">
-							<Card class="w-72">
+						<div class="grid grid-cols-1 sm:grid-cols-2 w-fit gap-4 mx-auto">
+							<Card class="w-fit sm:w-72">
 								<div class="p-4 flex flex-col justify-center gap-2">
 									<div class="flex items-center gap-2 text-sm font-bold">
 										<Icon size="20" name="file-icons:c" />
@@ -105,7 +109,7 @@ onKeyStroke('w', (e) => {
 									</p>
 								</div>
 							</Card>
-							<Card class="w-72">
+							<Card class="w-fit sm:w-72">
 								<div class="p-4 flex flex-col justify-center gap-2">
 									<div class="flex items-center gap-2 text-sm font-bold">
 										<Icon size="20" name="heroicons:square-3-stack-3d-20-solid" />
@@ -120,7 +124,7 @@ onKeyStroke('w', (e) => {
 									</p>
 								</div>
 							</Card>
-							<Card class="w-72">
+							<Card class="w-fit sm:w-72">
 								<div class="p-4 flex flex-col justify-center gap-2">
 									<div class="flex items-center gap-2 text-sm font-bold">
 										<Icon size="20" name="bx:network-chart" />
@@ -135,7 +139,7 @@ onKeyStroke('w', (e) => {
 									</p>
 								</div>
 							</Card>
-							<Card class="w-72">
+							<Card class="w-fit sm:w-72">
 								<div class="p-4 flex flex-col justify-center gap-2">
 									<div class="flex items-center gap-2 text-sm font-bold">
 										<Icon size="20" name="fluent:book-question-mark-24-filled" />

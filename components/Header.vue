@@ -11,7 +11,7 @@ onKeyStroke('j', (e) => {
 </script>
 
 <template>
-	<div class="fixed w-full">
+	<div class="fixed w-full z-[999] invisible sm:visible">
 		<div class="max-w-7xl mx-auto">
 			<div class="flex w-full py-2 px-4">
 				<div class="inline-flex w-1/2">
