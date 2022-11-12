@@ -16,7 +16,7 @@ onKeyStroke('j', (e) => {
 			<div class="flex w-full py-2 px-4">
 				<div class="inline-flex w-1/2">
 					<div class="rounded-full p-2 logo">
-						<img src="logo.svg" alt="logo" class="w-5 h-5 -rotate-[15deg]">
+						<img src="/logo.svg" alt="logo" class="w-5 h-5 -rotate-[15deg]">
 					</div>
 				</div>
 				<div class="inline-flex justify-end w-1/2">

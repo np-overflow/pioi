@@ -7,7 +7,7 @@
 		<footer class="footer items-center p-4">
 			<div class="items-center grid-flow-col">
 				<div class="rounded-full p-2 logo">
-					<img src="logo.svg" alt="logo" class="w-5 h-5 -rotate-[15deg]">
+					<img src="/logo.svg" alt="logo" class="w-5 h-5 -rotate-[15deg]">
 				</div>
 				<p>Copyright © 2022 - All right reserved</p>
 			</div>
