@@ -17,16 +17,18 @@ watchEffect(() => {
 	<div class="relative m-auto font-mono-on">
 		<!-- <TheHeroCircle /> -->
 		<!-- <div class="pt-16 sm:pt-32" /> -->
-		<Header />
 		<GlowWrapper>
+			<Header />
 			<div id="hero" class="grid h-screen">
 				<div class="my-auto">
-					<h1 class="relative text-center text-2xl sm:text-6xl text-white font-bold">
-						Welcome to PIOI
-					</h1>
-					<h2 class="mt-4 text-center text-[#8a8c93] italic px-2 xs:px-4 sm:px-0">
-						<span class="font-bold">The</span> informatics olympiad for polytechnic and ITE students
-					</h2>
+					<div class="mx-auto max-w-xl">
+						<h1 class="relative text-center text-2xl sm:text-6xl text-white font-bold">
+							Welcome to PIOI
+						</h1>
+						<h2 class="mt-4 text-center text-[#8a8c93] italic px-2 xs:px-4">
+							<span class="font-bold">The</span> informatics olympiad for polytechnic and ITE students
+						</h2>
+					</div>
 					<div class="relative mx-auto max-w-4xl">
 						<TheJoinCard />
 					</div>
