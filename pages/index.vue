@@ -37,7 +37,7 @@ watchEffect(() => {
 			<GlowWrapper class="w-full">
 				<Section>
 					<div class="flex flex-col-reverse lg:flex-row w-full">
-						<div class="mt-4 sm:mt-8 rounded-lg w-full lg:w-[640px] aspect-[1.33/1] bg-cover bg-[url(https://support.hackerrank.com/hc/article_attachments/1500013934961/Task_Description.JPG)]" />
+						<div class="mt-4 sm:mt-8 lg:mt-0 rounded-lg w-full lg:w-[640px] aspect-[1.33/1] bg-cover bg-[url(https://support.hackerrank.com/hc/article_attachments/1500013934961/Task_Description.JPG)]" />
 						<div class="sm:pl-12 sm:pt-12 flex flex-col gap-2 items-center lg:items-stretch">
 							<div class="flex md:flex-col items-center gap-2">
 								<Icon size="32" name="charm:code" />
