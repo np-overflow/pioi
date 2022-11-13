@@ -33,8 +33,14 @@ const handleClick = () => {
         my-4 sm:my-8
         px-2 xs:px-3 sm:px-4"
 	>
-		<div class="z-[100] w-full join-card-content rounded-lg flex flex-col mt-2 xs:mt-3 sm:mt-4">
-			<div v-if="count < Object.keys(formData).length - 1" class="w-full h-[48px] sm:h-[80px] max-h-[100px] px-2 sm:px-4 pt-2">
+		<div
+			class="
+			z-[100] w-full join-card-content rounded-lg
+			flex flex-col
+			mt-2
+			xs:mt-3 sm:mt-4"
+		>
+			<div v-if="count < Object.keys(formData).length" class="w-full h-[48px] sm:h-[80px] max-h-[100px] px-2 sm:px-4 pt-2">
 				<div ref="input" class="w-full h-full m-px text-left text-xs sm:text-sm md:text-base" contentEditable="true" :data-placeholder="`Please enter your ${Object.keys(formData)[count]}...`" />
 			</div>
 			<Chip class="my-2 mx-2 sm:mx-3">
