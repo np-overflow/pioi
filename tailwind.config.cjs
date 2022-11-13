@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('tailwindcss').Config} */
 
-const defaultTheme = require('tailwindcss/defaultTheme')
-
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
@@ -14,10 +12,8 @@ module.exports = {
 				default: '""',
 			},
 			fontFamily: {
-				sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-			},
-			flex: {
-				'1-0': '1 0',
+				'mono-on': ['darkmode-mono-on', 'sans-serif'],
+				'mono-off': ['darkmode-mono-off', 'sans-serif'],
 			},
 		},
 	},

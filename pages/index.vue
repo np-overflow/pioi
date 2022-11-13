@@ -14,7 +14,7 @@ watchEffect(() => {
 </script>
 
 <template>
-	<div class="relative m-auto">
+	<div class="relative m-auto font-mono-on">
 		<!-- <TheHeroCircle /> -->
 		<!-- <div class="pt-16 sm:pt-32" /> -->
 		<Header />
