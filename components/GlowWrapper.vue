@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const target = ref(null)
+const target = ref<Nullable<HTMLElement>>(null)
 
 useEventListener(target, 'mousemove', (e: MouseEvent) => {
 	const parent = target.value
