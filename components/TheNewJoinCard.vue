@@ -29,11 +29,10 @@
 				xs:my-3 sm:my-4"
 			>
 				<div class="w-full h-[48px] sm:h-[80px] max-h-[100px] px-2 sm:px-4 pt-2">
-					<NuxtLink to="https://goo.gl/maps/zKPcBLXsqbrSGQb56" class="mt-6 flex justify-center items-center gap-2">
+					<NuxtLink to="https://goo.gl/maps/zKPcBLXsqbrSGQb56" class="mt-8 flex justify-center items-center gap-2">
 						<Icon name="gis:location-poi" />
 						Ngee Ann Polytechnic
 					</NuxtLink>
-					<!-- <input ref="input" class="w-full m-px text-left text-xs sm:text-sm" placeholder="Test"> -->
 				</div>
 				<Chip class="my-3 mx-auto">
 					<Icon name="line-md:calendar" class="text-[#8c8c93]" />
