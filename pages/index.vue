@@ -29,8 +29,8 @@ watchEffect(() => {
 							<span class="font-bold">The</span> informatics olympiad for polytechnic and ITE students
 						</h2>
 					</div>
-					<div class="relative mx-auto max-w-4xl">
-						<TheJoinCard />
+					<div class="mx-auto max-w-4xl mt-12">
+						<TheNewJoinCard />
 					</div>
 				</div>
 			</div>
@@ -40,14 +40,14 @@ watchEffect(() => {
 				<Section>
 					<div class="flex flex-col-reverse lg:flex-row w-full">
 						<div class="mt-4 sm:mt-8 lg:mt-0 rounded-lg w-full lg:w-[640px] aspect-[1.33/1] bg-cover bg-[url(https://support.hackerrank.com/hc/article_attachments/1500013934961/Task_Description.JPG)]" />
-						<div class="sm:pl-12 sm:pt-12 flex flex-col gap-2 items-center lg:items-stretch">
+						<div class="md:pl-12 md:pt-12 flex flex-col gap-2 items-center lg:items-stretch">
 							<div class="flex md:flex-col items-center gap-2">
 								<Icon size="32" name="charm:code" />
 								<h2 class="ml-1 text-2xl sm:text-3xl text-left">
 									Contest Platform <br> & Languages
 								</h2>
 							</div>
-							<div class="grid grid-cols-2 w-fit gap-4 mt-4 sm:mt-auto">
+							<div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-2 w-fit gap-4 mt-4 md:mt-auto">
 								<NuxtLink to="https://www.python.org/">
 									<Card class="h-24 md:w-32">
 										<div class="p-4 h-full flex items-center justify-center text-sm font-bold gap-4">
@@ -98,7 +98,7 @@ watchEffect(() => {
 								that you can learn the basics of competitive programming!
 							</p>
 						</h2>
-						<div class="grid grid-cols-1 sm:grid-cols-2 w-fit gap-4 mx-auto">
+						<div class="grid grid-cols-1 md:grid-cols-2 w-fit gap-4 mx-auto">
 							<Card class="w-fit sm:w-72">
 								<div class="p-4 flex flex-col justify-center gap-2">
 									<div class="flex items-center gap-2 text-sm font-bold">
