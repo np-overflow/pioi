@@ -16,20 +16,20 @@ useEventListener(target, 'mousemove', (e: MouseEvent) => {
 		card.style.setProperty('--y', `${y}px`)
 	}
 })
-// useEventListener(target, 'mouseleave', (e: MouseEvent) => {
-// 	const parent = target.value
+useEventListener(target, 'mouseleave', (e: MouseEvent) => {
+	const parent = target.value
 
-// 	if (parent == null)
-// 		return
+	if (parent == null)
+		return
 
-// 	for (const card of parent.getElementsByClassName('glow') as HTMLCollectionOf<HTMLElement>) {
-// 		const x = NaN
-// 		const y = NaN
+	for (const card of parent.getElementsByClassName('glow') as HTMLCollectionOf<HTMLElement>) {
+		const x = NaN
+		const y = NaN
 
-// 		card.style.setProperty('--x', `${x}px`)
-// 		card.style.setProperty('--y', `${y}px`)
-// 	}
-// })
+		card.style.setProperty('--x', `${x}px`)
+		card.style.setProperty('--y', `${y}px`)
+	}
+})
 </script>
 
 <template>
