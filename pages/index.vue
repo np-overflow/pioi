@@ -81,7 +81,7 @@ watchEffect(() => {
 								</NuxtLink>
 							</div>
 						</div>
-						<img class="mt-4 sm:mt-8 lg:mt-0 rounded-lg w-full lg:w-[560px] aspect-[1.33/1] bg-cover" src="https://via.placeholder.com/560x420"/>
+						<img class="mt-4 sm:mt-8 lg:mt-0 rounded-lg w-full lg:w-[560px] aspect-[1.33/1] bg-cover" src="https://via.placeholder.com/560x420">
 					</div>
 				</Section>
 			</GlowWrapper>
