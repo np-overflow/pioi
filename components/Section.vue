@@ -26,7 +26,7 @@ const skew = computed(() => {
 			w-full lg:w-fit h-fit
 			px-2 xs:px-3 sm:px-10
 			py-4 sm:py-8
-			mx-2
+			mx-2 mb-8
 			border-gray-300 bg-[#444]
 			transition-all duration-500"
 		>
@@ -70,33 +70,33 @@ span::after {
 	absolute
 	backdrop-blur-sm
 	rounded-md
-	w-16 h-16
+	w-12 h-12
+	sm:w-16 sm:h-16
 	transition-all duration-500;
 	animation: animate 2s ease-in-out infinite;
 	box-shadow: 0 -2px 6px hsl(0deg 0% 100% / 17%), 0 5px 18px rgb(0 0 0 / 40%), 0 4px 40px 8px rgb(0 0 0 / 40%), 0 1px 4px -1px rgb(0 0 0 / 30%), inset 0 0 0 0.3px hsl(0deg 0% 100% / 30%), 0 0 0 0.5px hsl(0deg 0% 100% / 40%);
 	background: linear-gradient(177.75deg,rgba(26,27,30,.4) 1.89%,rgba(12,13,17,.2) 98.11%);
 }
 
-.section:hover span::before,
-.section:hover span::after {
-	@apply w-16 h-16;
-}
-
 span::before {
-	@apply -top-8 right-16;
+	@apply
+	-top-10 right-8
+	sm:-top-8 sm:right-16
 }
 
 .section:hover span::before {
-	@apply -top-6 right-14;
+	@apply sm:-top-6 sm:right-14;
 }
 
 span::after {
-	@apply -bottom-8 left-16;
+	@apply
+	-bottom-11 left-8
+	sm:-bottom-8 sm:left-16;
 	animation-delay: -1s;
 }
 
 .section:hover span::after {
-	@apply -bottom-6 left-14;
+	@apply sm:-bottom-6 sm:left-14;
 }
 
 @keyframes animate {
