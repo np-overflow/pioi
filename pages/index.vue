@@ -35,15 +35,14 @@ watchEffect(() => {
 				</div>
 			</div>
 		</GlowWrapper>
-		<div class="mx-auto max-w-7xl p-2 sm:p-8 flex flex-col items-center gap-16 lg:gap-0">
+		<div class="mx-auto max-w-7xl p-2 sm:p-8 flex flex-col items-center gap-[8rem] lg:gap-0">
 			<GlowWrapper class="w-full">
-				<Section>
-					<div class="flex flex-col-reverse lg:flex-row w-full">
-						<div class="mt-4 sm:mt-8 lg:mt-0 rounded-lg w-full lg:w-[640px] aspect-[1.33/1] bg-cover bg-[url(https://support.hackerrank.com/hc/article_attachments/1500013934961/Task_Description.JPG)]" />
+				<Section skew-left>
+					<div class="flex flex-col lg:flex-row-reverse w-full">
 						<div class="md:pl-12 md:pt-12 flex flex-col gap-2 items-center lg:items-stretch">
-							<div class="flex md:flex-col items-center gap-2">
-								<Icon size="32" name="charm:code" />
-								<h2 class="ml-1 text-2xl sm:text-3xl text-left">
+							<div class="flex md:flex-col text-center items-center lg:text-left gap-2">
+								<Icon size="32" name="charm:code" class="!hidden sm:!inline-block" />
+								<h2 class="ml-1 text-2xl sm:text-3xl">
 									Contest Platform <br> & Languages
 								</h2>
 							</div>
@@ -82,6 +81,7 @@ watchEffect(() => {
 								</NuxtLink>
 							</div>
 						</div>
+						<img class="mt-4 sm:mt-8 lg:mt-0 rounded-lg w-full lg:w-[560px] aspect-[1.33/1] bg-cover" src="https://via.placeholder.com/560x420"/>
 					</div>
 				</Section>
 			</GlowWrapper>
@@ -90,7 +90,7 @@ watchEffect(() => {
 					<div class="flex flex-col gap-8 mx-auto">
 						<h2 class="text-xl text-center">
 							Introductory Workshops
-							<p class="text-sm text-center text-[#8a8c93]">
+							<p class="text-sm text-center text-[#8a8c93] mt-2 px-2 sm:px-0">
 								We know that this may be the first time you have participated in an informatics Olympiad.
 								<br>
 								So, to help ease you into the competition, we have prepared some workshops so
