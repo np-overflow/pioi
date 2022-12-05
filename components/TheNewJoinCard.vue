@@ -98,7 +98,6 @@
 
 	.box:hover span::before {
 		@apply
-		-top-1 left-9
 		sm:-top-6 sm:left-14;
 	}
 
@@ -110,10 +109,7 @@
 	}
 
 	.box:hover span::after {
-		@apply
-		-bottom-4 right-7
-		xs:right-9
-		sm:-bottom-6 sm:right-14;
+		@apply sm:-bottom-6 sm:right-14;
 	}
 
 	@keyframes animate {
