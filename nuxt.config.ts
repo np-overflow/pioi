@@ -28,5 +28,9 @@ export default defineNuxtConfig({
 			],
 		},
 	},
+	runtimeConfig: {
+		notionKey: '',
+		notionDB: '',
+	},
 },
 )
