@@ -10,13 +10,11 @@
 			<p class="max-w-sm text-lg text-left font-semibold leading-8 text-gray-300 z-20 mt-8">
 				The informatics olympiad for polytechnic and ITE students
 			</p>
-			<NuxtLink to="/join">
-				<Button class="font-semibold mt-4">
-					<div class="flex items-center py-1 pl-4 pr-3 text-sm">
-						Join
-						<Icon name="lucide:chevron-right" class="ml-2" />
-					</div>
-				</Button>
+			<NuxtLink to="/join" class="font-medium focus:outline-none focus:ring-offset-black text-base mt-4 px-4 py-2 relative text-white join-button hover:border-gradient-br-gradient-black inline-flex items-center rounded-lg focus-visible:ring-2">
+				<div class="flex items-center py-1 pl-4 pr-3 text-sm">
+					Join
+					<Icon name="lucide:chevron-right" class="ml-2" />
+				</div>
 			</NuxtLink>
 			<img src="/hero.svg" alt="" class="pointer-events-none absolute hidden md:block -right-8 sm:-top-[80px] md:-top-[120px] lg:-top-[220px] w-3/4 z-10">
 		</div>
@@ -150,5 +148,20 @@
 </template>
 
 <style scoped>
+.join-button {
+	@apply border-2 border-transparent;
+	background: linear-gradient(90deg, #141418, #141418) padding-box, linear-gradient(to bottom right, #ffbc00, #ff0058) border-box;
+}
 
+.join-button:hover {
+	background: linear-gradient(90deg, #0c0c0c, #0c0c0c) padding-box, linear-gradient(to bottom right, #ffbc00, #ff0058) border-box;
+}
+
+.join-button::before {
+	@apply content-default absolute transition duration-200 rounded-lg opacity-0 -inset-0.5 bg-gradient-to-r from-[#ffbc00] to-[#ff0058] blur-md z-[-1]
+}
+
+.join-button:hover::before {
+	@apply opacity-75
+}
 </style>
