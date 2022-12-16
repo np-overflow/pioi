@@ -3,17 +3,19 @@
 
 <template>
 	<GlowWrapper class="pt-64 h-[calc(100vh-4rem)] bg-[url('/background.svg')] bg-cover z-0">
-		<div class="mx-auto sm:px-6 lg:px-8 px-4 pt-12 max-w-7xl relative flex flex-col items-center sm:items-start gap-y-8">
+		<div class="mx-auto sm:px-6 lg:px-8 px-4 pt-12 max-w-7xl relative flex flex-col items-center sm:items-start">
 			<h1 class="relative text-5xl font-black text-left md:text-6xl lg:text-7xl z-20">
 				Welcome to PIOI
 			</h1>
-			<p class="max-w-sm text-lg text-left font-semibold leading-8 text-gray-300 z-20">
+			<p class="max-w-sm text-lg text-left font-semibold leading-8 text-gray-300 z-20 mt-8">
 				The informatics olympiad for polytechnic and ITE students
 			</p>
 			<NuxtLink to="/join">
-				<Button class="font-semibold">
-					Join
-					<Icon name="lucide:chevron-right" />
+				<Button class="font-semibold mt-4">
+					<div class="flex items-center py-1 pl-4 pr-3 text-sm">
+						Join
+						<Icon name="lucide:chevron-right" class="ml-2" />
+					</div>
 				</Button>
 			</NuxtLink>
 			<img src="/hero.svg" alt="" class="pointer-events-none absolute hidden md:block -right-8 sm:-top-[80px] md:-top-[120px] lg:-top-[220px] w-3/4 z-10">
