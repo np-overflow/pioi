@@ -30,12 +30,11 @@
 	filter: blur(32px)
 }
 
-.section::before,
 .section::after {
 	@apply content-default
 	absolute
 	hidden sm:block
-	w-1/2 h-[105%] lg:h-[110%]
+	w-1/2 h-full
 	bg-gradient-to-br from-[#ffbc00] to-[#ff0058]
 	rounded-md
 	transition-all duration-500
@@ -43,9 +42,8 @@
 	transform: skewX(15deg);
 }
 
-.section:hover::before,
 .section:hover::after {
-	@apply skew-x-0;
+	@apply skew-x-0 h-[110%];
 	width: calc(100% - 90px);
 }
 
