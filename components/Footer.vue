@@ -26,10 +26,10 @@
 				<NuxtLink to="mailto:np.ict.overflow@gmail.com">
 					<Icon size="24" name="line-md:email" />
 				</NuxtLink>
-				<NuxtLink to="">
+				<NuxtLink to="https://www.instagram.com/npoverflow/">
 					<Icon size="24" name="line-md:instagram" />
 				</NuxtLink>
-				<NuxtLink to="">
+				<NuxtLink to="https://discord.gg/gUzY5FrvbM">
 					<Icon size="24" name="line-md:discord" />
 				</NuxtLink>
 			</div>
