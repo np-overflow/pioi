@@ -2,16 +2,9 @@
 export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/tailwindcss',
-		'@nuxtjs/color-mode',
 		'@vueuse/nuxt',
 		'nuxt-icon',
 	],
-	colorMode: {
-		preference: 'system', // default theme
-		dataValue: 'theme', // activate data-theme in <html> tag
-		fallback: 'dark',
-		classSuffix: '',
-	},
 	app: {
 		head: {
 			htmlAttrs: {
@@ -26,6 +19,9 @@ export default defineNuxtConfig({
 					href: 'https://use.typekit.net/soy0jkj.css',
 				},
 			],
+			bodyAttrs: {
+				class: 'bg-[#0c0c0c]',
+			},
 		},
 	},
 	runtimeConfig: {

@@ -3,7 +3,7 @@ const target = ref(null)
 </script>
 
 <template>
-	<div ref="target" class="glow cursor-pointer flex relative rounded-md bg-[#444]">
+	<div ref="target" class="glow cursor-pointer flex relative rounded-md bg-[#18181b]">
 		<div class="content">
 			<slot />
 		</div>
@@ -18,7 +18,7 @@ const target = ref(null)
 }
 
 .content {
-    @apply m-px py-2 px-4 text-white flex justify-between items-center gap-2 text-xs bg-base-100;
+    @apply m-px py-2 px-4 text-white flex justify-between items-center gap-2 text-xs bg-[#0c0c0c];
     border-radius: inherit;
     z-index: 1000;
 }
