@@ -23,7 +23,7 @@ const target = ref(null)
 <style scoped>
 .glow::before {
     @apply content-default absolute inset-0;
-    background: radial-gradient(24rem circle at var(--x) var(--y),hsla(0,0%,100%,.7),transparent 40%);
+    background: radial-gradient(28rem circle at var(--x) var(--y),hsla(0,0%,100%,.7),transparent 40%);
     border-radius: inherit;
 }
 
