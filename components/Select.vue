@@ -2,6 +2,7 @@
 import type { Lyra } from '@lyrasearch/lyra'
 import { search as lyraSearch } from '@lyrasearch/lyra'
 
+// #region Props & Emits
 const props = defineProps<{
 	transformer: (...args: any[]) => any[]
 	db: Lyra<LyraSchema>
@@ -18,15 +19,19 @@ const {
 	data,
 	isMultiselect,
 } = toRefs(props)
+// #endregion
 
+// #region Refs
 const isOptionsActive = ref(false)
 const optionsEl = ref<HTMLDivElement | null>(null)
 const input = ref<HTMLInputElement | null>(null)
+
 const search = ref('')
 const searchResults = ref<any[]>([])
 const currentSelection = ref<string[]>([])
-useFocus(input, { initialValue: true })
+// #endregion
 
+// #region Handlers
 const toggleOptions = () => {
 	isOptionsActive.value = !isOptionsActive.value
 	emits('optionsToggled', isOptionsActive.value)
@@ -52,16 +57,9 @@ const handleEscape = () => {
 	isOptionsActive.value = false
 	emits('optionsToggled', false)
 }
+// #endregion
 
-const { escape } = useMagicKeys({
-	passive: false,
-	onEventFired(e) {
-		const isEscape = e.key === 'escape'
-		if (isEscape && e.type === 'keydown')
-			e.preventDefault()
-	},
-})
-
+// #region Search
 watch(search, (newVal) => {
 	if (!newVal) {
 		searchResults.value = []
@@ -78,14 +76,18 @@ watch(search, (newVal) => {
 		return data.value[_id]
 	})
 
-	if (dataHits.length && !dataHits.some(data => !data))
-		searchResults.value = [...new Set(dataHits)]
-	else
-		searchResults.value = []
+	if (dataHits.length && !dataHits.some(data => !data)) searchResults.value = [...new Set(dataHits)]
+	else searchResults.value = []
 })
+// #endregion
 
+// #region Interactivity
+const { escape } = useMagicKeys()
+
+useFocus(input, { initialValue: true })
 whenever(escape, handleEscape)
 onClickOutside(optionsEl, toggleOptions)
+// #endregion
 </script>
 
 <template>
@@ -100,9 +102,9 @@ onClickOutside(optionsEl, toggleOptions)
 				</p>
 			</div>
 			<ul v-else class="flex flex-wrap gap-2">
-				<p v-if="currentSelection.length <= 0">
+				<li v-if="currentSelection.length <= 0">
 					{{ placeholder ? placeholder : 'Empty' }}
-				</p>
+				</li>
 				<li v-for="selection in currentSelection" v-else :key="selection" class="p-1 bg-[#141418] text-white rounded w-fit text-xs border-[0.5px] border-white/20">
 					{{ selection }}
 				</li>
@@ -122,7 +124,8 @@ onClickOutside(optionsEl, toggleOptions)
 			<ul v-if="searchResults.length <= 0" class="p-1 text-sm">
 				<SelectOption
 					v-for="option in transformer(data)"
-					:key="option" :value="option"
+					:key="option"
+					:value="option"
 					:is-multiselect="isMultiselect"
 					:is-option-selected="currentSelection.includes(option)"
 					@option-selected="handleSelect"
@@ -141,7 +144,3 @@ onClickOutside(optionsEl, toggleOptions)
 		</div>
 	</div>
 </template>
-
-<style scoped>
-
-</style>
