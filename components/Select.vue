@@ -7,6 +7,7 @@ const props = defineProps<{
 	db: Lyra<LyraSchema>
 	data: any[]
 	placeholder?: string
+	isMultiselect?: boolean
 }>()
 
 const emits = defineEmits(['optionsToggled'])
@@ -15,6 +16,7 @@ const {
 	transformer,
 	db,
 	data,
+	isMultiselect,
 } = toRefs(props)
 
 const isOptionsActive = ref(false)
@@ -22,7 +24,7 @@ const optionsEl = ref<HTMLDivElement | null>(null)
 const input = ref<HTMLInputElement | null>(null)
 const search = ref('')
 const searchResults = ref<any[]>([])
-const currentSelection = ref('')
+const currentSelection = ref<string[]>([])
 useFocus(input, { initialValue: true })
 
 const toggleOptions = () => {
@@ -31,8 +33,17 @@ const toggleOptions = () => {
 }
 
 const handleSelect = (selection: string) => {
-	currentSelection.value = selection
-	toggleOptions()
+	if (currentSelection.value.includes(selection)) {
+		currentSelection.value.splice(currentSelection.value.indexOf(selection), 1)
+		return
+	}
+	if (!isMultiselect?.value) {
+		currentSelection.value[0] = selection
+		toggleOptions()
+		return
+	}
+	currentSelection.value.push(selection)
+	currentSelection.value.sort()
 }
 
 const handleEscape = () => {
@@ -52,8 +63,10 @@ const { escape } = useMagicKeys({
 })
 
 watch(search, (newVal) => {
-	if (!newVal)
+	if (!newVal) {
+		searchResults.value = []
 		return
+	}
 
 	const res = lyraSearch(db.value, {
 		term: newVal,
@@ -77,10 +90,23 @@ onClickOutside(optionsEl, toggleOptions)
 
 <template>
 	<div class="relative w-full">
-		<div class="text-gray-400 w-full rounded hover:bg-[#18181b] py-1" @click="toggleOptions">
-			<p>
-				{{ currentSelection ? currentSelection : (placeholder ? placeholder : 'Empty') }}
-			</p>
+		<div class="text-gray-400 w-full rounded hover:bg-[#18181b] p-1" @click="toggleOptions">
+			<div v-if="!isMultiselect">
+				<p v-if="currentSelection.length > 0" class="text-white">
+					{{ currentSelection[0] }}
+				</p>
+				<p v-else>
+					{{ placeholder ? placeholder : 'Empty' }}
+				</p>
+			</div>
+			<ul v-else class="flex flex-wrap gap-2">
+				<p v-if="currentSelection.length <= 0">
+					{{ placeholder ? placeholder : 'Empty' }}
+				</p>
+				<li v-for="selection in currentSelection" v-else :key="selection" class="p-1 bg-[#141418] text-white rounded w-fit text-xs border-[0.5px] border-white/20">
+					{{ selection }}
+				</li>
+			</ul>
 		</div>
 		<div v-if="isOptionsActive" ref="optionsEl" class="absolute top-0 z-10 w-full rounded bg-[#0a0a06] border-[0.5px] border-white/20">
 			<div class="flex items-center px-4 py-2 border-b-[0.5px] border-white/20">
@@ -93,14 +119,24 @@ onClickOutside(optionsEl, toggleOptions)
 					placeholder="Type to search..."
 				>
 			</div>
-			<ul class="p-1 text-sm">
-				<!-- eslint-disable-next-line vue/no-use-v-if-with-v-for -->
-				<SelectOption v-for="option in transformer(data)" v-if="searchResults.length <= 0" :key="option" @click="() => handleSelect(option)">
-					{{ option }}
-				</SelectOption>
-				<SelectOption v-for="searchOption in transformer(searchResults)" v-else :key="searchOption" @click="() => handleSelect(searchOption)">
-					{{ searchOption }}
-				</SelectOption>
+			<ul v-if="searchResults.length <= 0" class="p-1 text-sm">
+				<SelectOption
+					v-for="option in transformer(data)"
+					:key="option" :value="option"
+					:is-multiselect="isMultiselect"
+					:is-option-selected="currentSelection.includes(option)"
+					@option-selected="handleSelect"
+				/>
+			</ul>
+			<ul v-else class="p-1 text-sm">
+				<SelectOption
+					v-for="searchOption in transformer(searchResults)"
+					:key="searchOption"
+					:value="searchOption"
+					:is-option-selected="currentSelection.includes(searchOption)"
+					:is-multiselect="isMultiselect"
+					@option-selected="handleSelect"
+				/>
 			</ul>
 		</div>
 	</div>
