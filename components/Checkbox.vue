@@ -11,6 +11,7 @@ const toggleChecked = () => {
 
 <template>
 	<Icon
+		size="16"
 		:name="isChecked ? 'material-symbols:check-box' : 'material-symbols:check-box-outline-blank'"
 		@click="toggleChecked"
 	/>

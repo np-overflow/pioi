@@ -20,6 +20,6 @@ const target = ref(null)
 .content {
     @apply m-px py-2 px-4 text-white flex justify-between items-center gap-2 text-xs bg-[#0c0c0c];
     border-radius: inherit;
-    z-index: 60;
+    z-index: 10;
 }
 </style>
