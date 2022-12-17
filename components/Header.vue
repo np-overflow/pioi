@@ -2,7 +2,7 @@
 </script>
 
 <template>
-	<header class="sticky top-0 z-[9999] min-h-[4rem] text-white backdrop-blur-md bg-[#0c0c0cbf]">
+	<header class="sticky top-0 z-[90] min-h-[4rem] text-white backdrop-blur-md bg-[#0c0c0cbf]">
 		<div class="mx-auto px-4 max-w-7xl relative">
 			<nav class="flex w-full py-2">
 				<div class="inline-flex w-1/2">

@@ -39,6 +39,6 @@ const target = ref(null)
 .content {
     @apply m-px h-full text-white text-xs bg-[#0c0c0c];
     border-radius: inherit;
-    z-index: 1000;
+    z-index: 60;
 }
 </style>
