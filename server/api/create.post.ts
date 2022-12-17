@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
 		})
 	}
 	catch (e) {
-		return { e }
+		return { status: 404, e }
 	}
 
 	return {
