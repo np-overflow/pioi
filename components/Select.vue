@@ -11,7 +11,7 @@ const props = defineProps<{
 	isMultiselect?: boolean
 }>()
 
-const emits = defineEmits(['optionsToggled'])
+const emits = defineEmits(['optionsToggled', 'optionSelected'])
 
 const {
 	transformer,
@@ -40,15 +40,18 @@ const toggleOptions = () => {
 const handleSelect = (selection: string) => {
 	if (currentSelection.value.includes(selection)) {
 		currentSelection.value.splice(currentSelection.value.indexOf(selection), 1)
+		emits('optionSelected', currentSelection.value)
 		return
 	}
 	if (!isMultiselect?.value) {
 		currentSelection.value[0] = selection
 		toggleOptions()
-		return
 	}
-	currentSelection.value.push(selection)
-	currentSelection.value.sort()
+	else {
+		currentSelection.value.push(selection)
+		currentSelection.value.sort()
+	}
+	emits('optionSelected', currentSelection.value)
 }
 
 const handleEscape = () => {

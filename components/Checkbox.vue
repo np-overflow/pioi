@@ -1,8 +1,11 @@
 <script setup lang="ts">
+const emits = defineEmits(['checked'])
+
 const isChecked = ref(false)
 
 const toggleChecked = () => {
 	isChecked.value = !isChecked.value
+	emits('checked', isChecked.value)
 }
 </script>
 
@@ -12,7 +15,3 @@ const toggleChecked = () => {
 		@click="toggleChecked"
 	/>
 </template>
-
-<style scoped>
-
-</style>
