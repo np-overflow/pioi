@@ -6,6 +6,7 @@ const props = defineProps<{
 	transformer: (...args: any[]) => any[]
 	db: Lyra<LyraSchema>
 	data: any[]
+	placeholder?: string
 }>()
 
 const emits = defineEmits(['optionsToggled'])
@@ -76,9 +77,9 @@ onClickOutside(optionsEl, toggleOptions)
 
 <template>
 	<div class="relative w-full">
-		<div class="text-gray-400 w-full rounded hover:bg-[#18181b] p-1" @click="toggleOptions">
+		<div class="text-gray-400 w-full rounded hover:bg-[#18181b] py-1" @click="toggleOptions">
 			<p>
-				{{ currentSelection ? currentSelection : 'Empty' }}
+				{{ currentSelection ? currentSelection : (placeholder ? placeholder : 'Empty') }}
 			</p>
 		</div>
 		<div v-if="isOptionsActive" ref="optionsEl" class="absolute top-0 z-10 w-full rounded bg-[#0a0a06] border-[0.5px] border-white/20">
