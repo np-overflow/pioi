@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { create, insert } from '@lyrasearch/lyra'
+import * as z from 'zod'
 // #region Refs & Emits
 const emits = defineEmits(['exit'])
 
@@ -17,8 +18,21 @@ const isOtherDialogsActive = ref(false)
 // #endregion
 
 // #region Form
+const schema = z.object({
+	name: z.string().min(1, 'Name is required'),
+	email: z.string().email({ message: 'Invalid email' }),
+	school: z.string({ required_error: 'Select your school' }).min(1, 'Select your school'),
+	workshops: z.string().array().optional(),
+	joining: z.boolean(),
+}).strict()
+
+const errors = ref<Record<string, string>>({})
+
 const handleSubmission = async () => {
-	if (!consentedToTOC.value) return
+	if (!consentedToTOC.value) {
+		errors.value.toc = 'You must agree to the TOC'
+		return
+	}
 
 	const formData = {
 		name: nameInput.value,
@@ -28,10 +42,23 @@ const handleSubmission = async () => {
 		joining: isJoining.value,
 	}
 
-	const res = await $fetch('/api/create', {
-		method: 'POST',
-		body: formData,
-	})
+	const result = await schema.safeParseAsync(formData)
+
+	if (!result.success) {
+		errors.value = result.error.issues.reduce<Record<string, string>>((prev, currentIssue) => {
+			prev[currentIssue.path.toString()] = currentIssue.message
+			return prev
+		}, {})
+	}
+	else {
+		errors.value = {}
+		const res = await $fetch('/api/create', {
+			method: 'POST',
+			body: formData,
+		})
+
+		if (res.status === 200) emits('exit')
+	}
 }
 // #endregion
 
@@ -111,33 +138,32 @@ onClickOutside(modal, () => emits('exit'))
         flex justify-center"
 	>
 		<GlowWrapper class="relative w-full max-w-3xl my-auto">
-			<div ref="modal" class="modal text-white relative flex flex-col gap-2 rounded-lg shadow-lg backdrop-blur-lg bg-[#0c0c0c] p-6 z-40">
-				<h1 class="text-3xl font-bold mb-4">
+			<div ref="modal" class="modal text-white relative flex flex-col gap-2 rounded-lg shadow-lg backdrop-blur-lg bg-[#0c0c0c] p-4 sm:p-6 z-40">
+				<h1 class="text-3xl font-bold sm:mb-4">
 					Registration Form
 				</h1>
 				<ul class="space-y-1 mb-8">
 					<RegistrationFormField header="Name" icon="gg:rename">
-						<input
+						<TextInput
 							ref="nameField"
-							v-model="nameInput"
-							class="w-full bg-transparent hover:bg-[#141418] rounded focus:outline-0 p-1"
-							type="text"
 							placeholder="Enter your name..."
-						>
+							:error="errors.name"
+							@input-change="(input) => nameInput = input"
+						/>
 					</RegistrationFormField>
 					<RegistrationFormField header="Email" icon="ic:round-alternate-email">
-						<input
-							v-model="emailInput"
-							class="w-full bg-transparent hover:bg-[#141418] rounded focus:outline-0 p-1"
-							type="email"
-							placeholder="Enter your email address..."
-						>
+						<EmailInput
+							placeholder="Enter your email..."
+							:error="errors.email"
+							@input-change="(input) => emailInput = input"
+						/>
 					</RegistrationFormField>
 					<RegistrationFormField header="School" icon="material-symbols:expand-circle-down-rounded">
 						<Select
 							placeholder="Select your school..."
 							:db="schoolsDb"
 							:data="schools"
+							:error="errors.school"
 							:transformer="(schools: any[]) => schools.map(({ name }) => name)"
 							@options-toggled="(isOptionsActive) => isOtherDialogsActive = isOptionsActive"
 							@option-selected="(school) => schoolSelection = school"
@@ -155,18 +181,23 @@ onClickOutside(modal, () => emits('exit'))
 						/>
 					</RegistrationFormField>
 					<RegistrationFormField header="Joining" icon="material-symbols:check-box">
-						<Checkbox @checked="(value) => isJoining = value" />
+						<div class="p-1">
+							<Checkbox @checked="(value) => isJoining = value" />
+						</div>
 					</RegistrationFormField>
 				</ul>
-				<div class="flex items-center gap-2">
-					<Checkbox @checked="(value) => consentedToTOC = value" />
-					<p>
+				<div class="relative flex items-center gap-2">
+					<Checkbox class="min-w-fit" @checked="(value) => consentedToTOC = value" />
+					<p class="text-xs text-right">
 						I agree to the
 						<NuxtLink class="link text-cyan-400">
 							terms & conditions
 						</NuxtLink>
 						of the event
 					</p>
+					<span class="absolute top-1/2 right-0 -translate-y-1/2 text-xs px-1 text-[#fa5152]">
+						{{ errors.toc }}
+					</span>
 				</div>
 				<Button class="w-fit mt-4" @click="handleSubmission">
 					Join!
