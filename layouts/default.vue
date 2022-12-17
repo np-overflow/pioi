@@ -1,25 +1,8 @@
 <script setup lang="ts">
-const { ctrl_j } = useMagicKeys({
-	passive: false,
-	onEventFired(e) {
-		const isCtrl_j = e.ctrlKey && e.key === 'j'
-		if (isCtrl_j && e.type === 'keydown')
-			e.preventDefault()
-	},
-})
-
-whenever(ctrl_j, () => {
-	// eslint-disable-next-line no-console
-	console.log('Ctrl j')
-})
 </script>
 
 <template>
-	<Header />
-	<main class="relative min-h-[calc(100vh-4rem)] flex flex-col text-white overflow-x-clip">
-		<slot />
-	</main>
-	<Footer />
+	<slot />
 </template>
 
 <style>
