@@ -1,0 +1,29 @@
+schools:
+  - name: ITE West
+    id: 0
+  - name: ITE East
+    id: 1
+  - name: ITE Central
+    id: 2
+  - name: Ngee Ann Polytechnic
+    id: 3
+  - name: Nanyang Polytechnic
+    id: 4
+  - name: Temasek Polytechnic
+    id: 5
+  - name: Singapore Polytechnic
+    id: 6
+  - name: Rebuplic Polytechnic
+    id: 7
+  - name: Others
+    id: 8
+
+workshops:
+  - name: 'Day 1: Basics of C++'
+    id: 0
+  - name: 'Day 2: Intro to Data Structures'
+    id: 1
+  - name: 'Day 3: Intro to Algorithms'
+    id: 2
+  - name: 'Day 4: Practical Use of Algorithms'
+    id: 3
