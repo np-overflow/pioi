@@ -33,18 +33,17 @@
 .section::after {
 	@apply content-default
 	absolute
-	hidden sm:block
-	w-1/2 h-full
+	block
+	w-[calc(100%-60px)] sm:w-1/2 h-full
 	bg-gradient-to-br from-[#ffbc00] to-[#ff0058]
 	rounded-md
+	sm:skew-x-[15deg]
 	transition-all duration-500
 	-z-10;
-	transform: skewX(15deg);
 }
 
 .section:hover::after {
-	@apply skew-x-0 h-[110%];
-	width: calc(100% - 90px);
+	@apply skew-x-0 sm:h-[110%] sm:w-[calc(100%-90px)];
 }
 
 span::before,
