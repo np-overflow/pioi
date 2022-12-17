@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const emits = defineEmits(['modalToggle'])
 </script>
 
 <template>
@@ -11,7 +12,7 @@
 					</div>
 				</div>
 				<GlowWrapper class="inline-flex justify-end w-1/2">
-					<Button class="text-white/70">
+					<Button class="text-white/70" @click="emits('modalToggle')">
 						Join
 						<KBD>Ctrl</KBD>
 						<KBD>J</KBD>
