@@ -4,10 +4,10 @@
 <template>
 	<GlowWrapper class="pt-64 h-[calc(100vh-4rem)] bg-[url('/background.svg')] bg-cover z-0">
 		<div class="mx-auto sm:px-6 lg:px-8 px-4 pt-12 max-w-7xl relative flex flex-col items-center sm:items-start">
-			<h1 class="relative text-5xl font-black text-left md:text-6xl lg:text-7xl z-20">
+			<h1 class="relative text-5xl font-black text-left lg:text-7xl z-20">
 				Welcome to PIOI
 			</h1>
-			<p class="max-w-sm text-lg text-left font-semibold leading-8 text-gray-300 z-20 mt-8">
+			<p class="max-w-xs lg:max-w-sm text-base lg:text-lg text-left font-semibold leading-8 text-gray-300 z-20 mt-6 lg:mt-8">
 				The informatics olympiad for polytechnic and ITE students
 			</p>
 			<NuxtLink to="/join" class="font-medium focus:outline-none focus:ring-offset-black text-base mt-4 px-4 py-2 relative text-white join-button hover:border-gradient-br-gradient-black inline-flex items-center rounded-lg focus-visible:ring-2">
@@ -16,49 +16,73 @@
 					<Icon name="lucide:chevron-right" class="ml-2" />
 				</div>
 			</NuxtLink>
-			<img src="/hero.svg" alt="" class="pointer-events-none absolute hidden md:block -right-8 sm:-top-[80px] md:-top-[120px] lg:-top-[220px] w-3/4 z-10">
+			<img src="/Hero.svg" alt="" class="pointer-events-none absolute hidden md:block -right-8 sm:-top-[100px] md:-top-[70px] lg:-top-[120px] xl:-top-[180px] w-3/4 z-10">
 		</div>
 	</GlowWrapper>
-	<div class="mx-auto relative max-w-7xl flex flex-col items-center gap-8 px-8">
+	<div class="mx-auto relative max-w-7xl flex flex-col items-center gap-8 px-4 md:px-8">
 		<span class="w-12 rounded-full h-1 bg-white" />
 		<h2 class="text-center text-2xl sm:text-3xl">
 			Contest Platform <br> & <br> Languages
 		</h2>
-		<GlowWrapper class="relative grid grid-cols-1 md:grid-cols-4 gap-8 w-full mt-16">
+		<GlowWrapper class="relative grid grid-cols-1 md:grid-cols-4 gap-y-12 lg:gap-x-8 w-full mt-16">
 			<NuxtLink to="https://www.python.org/">
-				<Card class="w-56 aspect-[4/3] mx-auto" is-styled>
+				<Card class="w-48 xl:w-56 aspect-[4/3] mx-auto" is-styled>
+					<Icon size="48" name="fa6-brands:python" class="absolute left-1/2 -translate-x-1/2 -top-8 blur-sm" />
 					<Icon size="48" name="fa6-brands:python" class="absolute left-1/2 -translate-x-1/2 -top-8" />
-					<div class="p-4 h-full flex items-center justify-center text-lg font-bold gap-4">
-						Python
+					<div class="p-4 h-full flex flex-col items-center justify-center gap-3">
+						<h3 class="text-lg font-bold">
+							Python
+						</h3>
+						<p class="text-gray-400 font-medium">
+							3.11.1 (CPython)
+						</p>
 					</div>
 				</Card>
 			</NuxtLink>
 			<NuxtLink to="https://docs.oracle.com/en/java/">
-				<Card class="w-56 aspect-[4/3] mx-auto" is-styled>
+				<Card class="w-48 xl:w-56 aspect-[4/3] mx-auto" is-styled>
+					<Icon size="48" name="la:java" class="absolute left-1/2 -translate-x-1/2 -top-8 blur-sm" />
 					<Icon size="48" name="la:java" class="absolute left-1/2 -translate-x-1/2 -top-8" />
-					<div class="p-4 h-full flex items-center justify-center text-lg font-bold gap-4">
-						Java
+					<div class="p-4 h-full flex flex-col items-center justify-center gap-3">
+						<h3 class="text-lg font-bold">
+							Java
+						</h3>
+						<p class="text-gray-400 font-medium">
+							OpenJDK 11
+						</p>
 					</div>
 				</Card>
 			</NuxtLink>
 			<NuxtLink to="https://en.cppreference.com/w/">
-				<Card class="w-56 aspect-[4/3] mx-auto" is-styled>
+				<Card class="w-48 xl:w-56 aspect-[4/3] mx-auto" is-styled>
+					<Icon size="48" name="file-icons:c" class="absolute left-1/2 -translate-x-1/2 -top-8 blur-sm" />
 					<Icon size="48" name="file-icons:c" class="absolute left-1/2 -translate-x-1/2 -top-8" />
-					<div class="p-4 h-full flex items-center justify-center text-lg font-bold gap-4">
-						C++
+					<div class="p-4 h-full flex flex-col items-center justify-center gap-3">
+						<h3 class="text-lg font-bold">
+							C++
+						</h3>
+						<p class="text-gray-400 font-medium">
+							11 (g++ 7.4.0)
+						</p>
 					</div>
 				</Card>
 			</NuxtLink>
 			<NuxtLink to="https://go.dev/">
-				<Card class="w-56 aspect-[4/3] mx-auto" is-styled>
+				<Card class="w-48 xl:w-56 aspect-[4/3] mx-auto" is-styled>
+					<Icon size="48" name="file-icons:go" class="absolute left-1/2 -translate-x-1/2 -top-6 blur-sm" />
 					<Icon size="48" name="file-icons:go" class="absolute left-1/2 -translate-x-1/2 -top-6" />
-					<div class="p-4 h-full flex items-center justify-center text-lg font-bold gap-4">
-						Go Lang
+					<div class="p-4 h-full flex flex-col items-center justify-center gap-3">
+						<h3 class="text-lg font-bold">
+							Go Lang
+						</h3>
+						<p class="text-gray-400 font-medium">
+							1.19.4
+						</p>
 					</div>
 				</Card>
 			</NuxtLink>
 		</GlowWrapper>
-		<GlowWrapper class="mt-48 w-full">
+		<GlowWrapper class="mt-48 mb-12 lg:mb-8 w-full">
 			<Section>
 				<div class="flex flex-col gap-8 mx-auto">
 					<span class="mx-auto w-12 rounded-full h-1 bg-white" />
