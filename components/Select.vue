@@ -7,6 +7,7 @@ const props = defineProps<{
 	transformer: (...args: any[]) => any[]
 	db: Lyra<LyraSchema>
 	data: any[]
+	error?: string
 	placeholder?: string
 	isMultiselect?: boolean
 }>()
@@ -95,7 +96,7 @@ onClickOutside(optionsEl, toggleOptions)
 
 <template>
 	<div class="relative w-full">
-		<div class="text-gray-400 w-full rounded hover:bg-[#18181b] p-1" @click="toggleOptions">
+		<div class="text-gray-400 w-full rounded hover:bg-[#18181b] p-1" :class="error ? 'error' : ''" @click="toggleOptions">
 			<div v-if="!isMultiselect">
 				<p v-if="currentSelection.length > 0" class="text-white">
 					{{ currentSelection[0] }}
@@ -113,7 +114,10 @@ onClickOutside(optionsEl, toggleOptions)
 				</li>
 			</ul>
 		</div>
-		<div v-if="isOptionsActive" ref="optionsEl" class="absolute top-0 z-10 w-full rounded bg-[#0a0a06] border-[0.5px] border-white/20">
+		<span class="absolute top-1/2 right-0 -translate-y-1/2 text-xs px-1 text-[#fa5152]">
+			{{ error }}
+		</span>
+		<div v-if="isOptionsActive" ref="optionsEl" class="absolute top-0 z-20 w-full rounded bg-[#0a0a06] border-[0.5px] border-white/20">
 			<div class="flex items-center px-4 py-2 border-b-[0.5px] border-white/20">
 				<Icon name="line-md:search" class="text-white -scale-x-100 mr-2" />
 				<input
@@ -147,3 +151,9 @@ onClickOutside(optionsEl, toggleOptions)
 		</div>
 	</div>
 </template>
+
+<style scoped>
+.error {
+    @apply outline-[0.5px] outline outline-[#fa5152] text-[#fa5152];
+}
+</style>

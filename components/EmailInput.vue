@@ -29,4 +29,8 @@ const input = ref('')
 .error {
     @apply outline-[0.5px] outline outline-[#fa5152] text-[#fa5152];
 }
+
+.error::placeholder {
+    @apply text-[#fa5152]
+}
 </style>
