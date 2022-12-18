@@ -14,12 +14,6 @@ export default defineNuxtConfig({
 			meta: [
 				{ name: 'description', content: 'PIOI' },
 			],
-			link: [
-				{
-					rel: 'stylesheet',
-					href: 'https://use.typekit.net/soy0jkj.css',
-				},
-			],
 			bodyAttrs: {
 				class: 'bg-[#0c0c0c]',
 			},
