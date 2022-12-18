@@ -23,6 +23,7 @@ export default defineNuxtConfig({
 			bodyAttrs: {
 				class: 'bg-[#0c0c0c]',
 			},
+			title: 'Poly-ITE Olympiad for Informatics',
 		},
 	},
 	runtimeConfig: {
