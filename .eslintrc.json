@@ -1,5 +1,4 @@
 {
-  "extends": "@antfu",
   "rules": {
     "no-tabs": "off",
     "@typescript-eslint/indent": [
@@ -71,7 +70,6 @@
         "VariableDeclarator": 1,
         "outerIIFEBody": 1
       }
-    ],
-    "antfu/if-newline": "off"
+    ]
   }
 }
