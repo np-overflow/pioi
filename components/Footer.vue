@@ -9,27 +9,27 @@
 				Copyright © 2022 Overflow - All rights reserved
 			</p>
 			<div class="flex text-center items-center gap-4 text-xs">
-				<NuxtLink class="link">
+				<NuxtLink to="/terms-and-conditions.pdf" class="link" target="_blank">
 					Terms & Conditions
 				</NuxtLink>
-				<NuxtLink class="link">
+				<NuxtLink to="/privacy-policy.pdf" class="link" target="_blank">
 					Privacy Policy
 				</NuxtLink>
-				<NuxtLink class="link">
+				<NuxtLink to="/rules-and-regulations.pdf" class="link" target="_blank">
 					Rules & Regulations
 				</NuxtLink>
-				<NuxtLink class="link">
+				<NuxtLink to="/code-of-conduct.pdf" class="link" target="_blank">
 					Code of Conduct
 				</NuxtLink>
 			</div>
 			<div class="inline-flex gap-4">
-				<NuxtLink to="mailto:np.ict.overflow@gmail.com">
+				<NuxtLink to="mailto:np.ict.overflow@gmail.com" target="_blank">
 					<Icon size="24" name="line-md:email" />
 				</NuxtLink>
-				<NuxtLink to="https://www.instagram.com/npoverflow/">
+				<NuxtLink to="https://www.instagram.com/npoverflow/" target="_blank">
 					<Icon size="24" name="line-md:instagram" />
 				</NuxtLink>
-				<NuxtLink to="https://discord.gg/gUzY5FrvbM">
+				<NuxtLink to="https://discord.gg/gUzY5FrvbM" target="_blank">
 					<Icon size="24" name="line-md:discord" />
 				</NuxtLink>
 			</div>

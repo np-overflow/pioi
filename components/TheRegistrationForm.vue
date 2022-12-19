@@ -190,7 +190,7 @@ onClickOutside(modal, () => emits('exit'))
 					<Checkbox class="min-w-fit" @checked="(value) => consentedToTOC = value" />
 					<p class="text-xs text-right">
 						I agree to the
-						<NuxtLink class="link text-cyan-400">
+						<NuxtLink to="/terms-and-conditions.pdf" target="_blank" class="link text-cyan-400">
 							terms & conditions
 						</NuxtLink>
 						of the event
