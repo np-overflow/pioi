@@ -1,6 +1,6 @@
 import { Client } from '@notionhq/client'
 
-const runtimeConfig = useRuntimeConfig()
+const { notionKey = globalThis.notionKey, notionDB = globalThis.notionDB  } = useRuntimeConfig()
 
-export const notion = new Client({ auth: runtimeConfig.notionKey })
-export const dbID = runtimeConfig.notionDB
+export const notion = new Client({ auth: notionKey })
+export const dbID = notionDB
