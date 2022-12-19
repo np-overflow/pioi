@@ -57,6 +57,8 @@ const handleSubmission = async () => {
 			body: formData,
 		})
 
+		console.log(res)
+
 		if (res.status === 200) emits('exit')
 	}
 }
