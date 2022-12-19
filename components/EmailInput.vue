@@ -13,7 +13,7 @@ const input = ref('')
 	<div class="relative flex flex-col w-full">
 		<input
 			v-model="input"
-			class="w-full bg-transparent hover:bg-[#141418] rounded focus:outline-0 p-1"
+			class="w-full bg-transparent hover:bg-[#141418] rounded focus:outline-0 pl-0 sm:pl-1 p-1"
 			type="email"
 			:placeholder="placeholder ? placeholder : 'Empty...'"
 			:class="error ? 'error' : ''"

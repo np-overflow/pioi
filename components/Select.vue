@@ -96,7 +96,7 @@ onClickOutside(optionsEl, toggleOptions)
 
 <template>
 	<div class="relative w-full">
-		<div class="text-gray-400 w-full rounded hover:bg-[#18181b] p-1" :class="error ? 'error' : ''" @click="toggleOptions">
+		<div class="text-gray-400 w-full rounded hover:bg-[#18181b] pl-0 sm:pl-1 p-1" :class="error ? 'error' : ''" @click="toggleOptions">
 			<div v-if="!isMultiselect">
 				<p v-if="currentSelection.length > 0" class="text-white">
 					{{ currentSelection[0] }}

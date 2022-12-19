@@ -139,10 +139,10 @@ onClickOutside(modal, () => emits('exit'))
 	>
 		<GlowWrapper class="relative w-full max-w-3xl my-auto">
 			<div ref="modal" class="modal text-white relative flex flex-col gap-2 rounded-lg shadow-lg backdrop-blur-lg bg-[#0c0c0c] p-4 sm:p-6 z-40">
-				<h1 class="text-3xl font-bold sm:mb-4">
+				<h1 class="text-xl sm:text-3xl font-bold sm:mb-4">
 					Registration Form
 				</h1>
-				<ul class="space-y-1 mb-8">
+				<ul class="space-y-1 sm:mb-4">
 					<RegistrationFormField header="Name" icon="gg:rename">
 						<TextInput
 							ref="nameField"
@@ -181,7 +181,7 @@ onClickOutside(modal, () => emits('exit'))
 						/>
 					</RegistrationFormField>
 					<RegistrationFormField header="Joining" icon="material-symbols:check-box">
-						<div class="p-1">
+						<div class="pl-0 sm:pl-1 p-1">
 							<Checkbox @checked="(value) => isJoining = value" />
 						</div>
 					</RegistrationFormField>
