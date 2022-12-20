@@ -35,16 +35,20 @@ whenever(ctrl_j, toggleModal)
 				<h1 class="relative text-5xl font-black text-center sm:text-left lg:text-7xl z-20">
 					Welcome to PIOI
 				</h1>
-				<p class="max-w-xs lg:max-w-sm text-base lg:text-lg text-center sm:text-left font-semibold text-gray-300 z-20 mt-6 lg:mt-8">
+				<p
+					class="max-w-xs lg:max-w-sm text-base lg:text-lg text-center sm:text-left font-semibold text-gray-300 z-20 mt-6 lg:mt-8">
 					The informatics olympiad for polytechnic and ITE students
 				</p>
-				<button class="font-medium focus:outline-none focus:ring-offset-black text-base mt-4 px-4 py-2 relative text-white join-button hover:border-gradient-br-gradient-black inline-flex items-center rounded-lg focus-visible:ring-2" @click="toggleModal">
+				<button
+					class="font-medium focus:outline-none focus:ring-offset-black text-base mt-4 px-4 py-2 relative text-white join-button hover:border-gradient-br-gradient-black inline-flex items-center rounded-lg focus-visible:ring-2"
+					@click="toggleModal">
 					<div class="flex items-center py-1 pl-4 pr-3 text-sm">
 						Join
 						<Icon name="lucide:chevron-right" class="ml-2" />
 					</div>
 				</button>
-				<img src="/Hero.svg" alt="" class="pointer-events-none absolute hidden md:block -right-8 sm:-top-[100px] md:-top-[70px] lg:-top-[120px] xl:-top-[180px] w-3/4 z-10">
+				<img src="/Hero.svg" alt=""
+					class="pointer-events-none absolute hidden md:block -right-8 sm:-top-[100px] md:-top-[70px] lg:-top-[120px] xl:-top-[180px] w-3/4 z-10">
 			</div>
 		</GlowWrapper>
 		<div class="mx-auto relative max-w-7xl flex flex-col items-center gap-6 sm:gap-8 px-4 md:px-8">
@@ -63,7 +67,10 @@ whenever(ctrl_j, toggleModal)
 				</Chip>
 			</div>
 			<p class="text-center text-sm text-gray-400 max-w-3xl">
-				PIOI is a 5 hour programming contest that focuses on testing problem solving skills as well as data structures and algorithms knowledge. During the contest, contestants will be given problem statements which they have to solve by writing efficient code. Contestants will then submit their solutions to the grading system, which will automatically test their code with test cases and award points to them.
+				PIOI is a 5 hour programming contest that focuses on testing problem solving skills as well as data structures
+				and algorithms knowledge. During the contest, contestants will be given problem statements which they have to
+				solve by writing efficient code. Contestants will then submit their solutions to the grading system, which will
+				automatically test their code with test cases and award points to them.
 			</p>
 			<span class="w-12 rounded-full h-1 bg-white mt-12" />
 			<h2 class="text-center text-2xl sm:text-3xl">
@@ -118,7 +125,7 @@ whenever(ctrl_j, toggleModal)
 						<Icon size="48" name="file-icons:go" class="absolute left-1/2 -translate-x-1/2 -top-6" />
 						<div class="p-4 h-full flex flex-col items-center justify-center gap-3">
 							<h3 class="text-lg font-bold">
-								Go Lang
+								Go
 							</h3>
 							<p class="text-gray-400 font-medium">
 								1.19.4
@@ -134,7 +141,7 @@ whenever(ctrl_j, toggleModal)
 						<h2 class="text-xl text-center">
 							Introductory Workshops
 							<p class="text-sm text-center text-[#8a8c93] mt-2 px-2 sm:px-0">
-								We know that this may be the first time you have participated in an informatics Olympiad.
+								We know that this may be the first time you have participated in an informatics olympiad.
 								<br>
 								So, to help ease you into the competition, we have prepared some workshops so
 								<br>
@@ -153,7 +160,8 @@ whenever(ctrl_j, toggleModal)
 										6 Mar 2023, 2pm - 5pm
 									</Chip>
 									<p>
-										As some of you may not have much knowledge about C++, this workshop will introduce you to the programming language and prepare you for the challenges!
+										As some of you may not have much knowledge about C++, this workshop will introduce you to the
+										programming language and prepare you for the challenges!
 									</p>
 								</div>
 							</Card>
@@ -168,7 +176,9 @@ whenever(ctrl_j, toggleModal)
 										7 Mar 2023, 2pm - 5pm
 									</Chip>
 									<p>
-										Effective use of data structures complement good algorithms. But what are data structures and how can we use them? In this workshop, we will introduce common data structures, how they work under the hood and how they can be applied.
+										Effective use of data structures complement good algorithms. But what are data structures and how
+										can we use them? In this workshop, we will introduce common data structures, how they work under the
+										hood and how they can be applied.
 									</p>
 								</div>
 							</Card>
@@ -183,7 +193,9 @@ whenever(ctrl_j, toggleModal)
 										8 Mar 2023, 2pm - 5pm
 									</Chip>
 									<p>
-										Algorithms make the difference between executing your program in the next day or the next year. This workshop will give you a rough footing on the fundamentals of algorithms, so, if you don’t have much prior knowledge on algorithms, this is the workshop for you!
+										Algorithms make the difference between executing your program in the next day or the next year. This
+										workshop will give you a rough footing on the fundamentals of algorithms, so, if you don’t have much
+										prior knowledge on algorithms, this is the workshop for you!
 									</p>
 								</div>
 							</Card>
@@ -198,7 +210,9 @@ whenever(ctrl_j, toggleModal)
 										9 Mar 2023, 2pm - 5pm
 									</Chip>
 									<p>
-										What's the point of theory if we do not know how to apply it? In this workshop, we will go through the thought process and dive into how the algorithms taught in previous workshops can be applied in real-world scenarios and practical programming questions!
+										What's the point of theory if we do not know how to apply it? In this workshop, we will go through
+										the thought process and dive into how the algorithms taught in previous workshops can be applied in
+										real-world scenarios and practical programming questions!
 									</p>
 								</div>
 							</Card>
