@@ -1,6 +1,8 @@
 import { dbID, notion } from '../lib/notion'
 
 export default defineEventHandler(async (event) => {
+	console.log(event)
+
 	const body = await readBody(event)
 
 	const { name, email, school, joining, workshops } = body
