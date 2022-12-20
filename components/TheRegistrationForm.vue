@@ -1,17 +1,20 @@
 <script setup lang="ts">
 import { create, insert } from '@lyrasearch/lyra'
 import * as z from 'zod'
+
 // #region Refs & Emits
 const emits = defineEmits(['exit'])
 
 const modal = ref<HTMLElement | null>(null)
 const nameField = ref<HTMLInputElement | null>(null)
 
-const nameInput = ref('')
-const emailInput = ref('')
-const schoolSelection = ref<string[]>([])
-const workshopsSelection = ref<string[]>([])
-const isJoining = ref(false)
+const form = ref<Record<string, any>>({
+	name: '',
+	email: '',
+	school: '',
+	workshops: [],
+	joining: false,
+})
 
 const consentedToTOC = ref(false)
 const isOtherDialogsActive = ref(false)
@@ -28,37 +31,27 @@ const schema = z.object({
 
 const errors = ref<Record<string, string>>({})
 
+const handleChange = async(key: string, input: any) => {
+	errors.value[key] = await getZodError(schema.shape[key as keyof typeof schema.shape], input)
+	form.value[key] = input
+}
+
 const handleSubmission = async () => {
 	if (!consentedToTOC.value) {
 		errors.value.toc = 'You must agree to the TOC'
 		return
 	}
 
-	const formData = {
-		name: nameInput.value,
-		email: emailInput.value,
-		school: schoolSelection.value[0],
-		workshops: workshopsSelection.value,
-		joining: isJoining.value,
-	}
+	errors.value = await getZodErrors(schema, form.value)
 
-	const result = await schema.safeParseAsync(formData)
+	if (Object.keys(errors.value).length > 0) return
 
-	if (!result.success) {
-		errors.value = result.error.issues.reduce<Record<string, string>>((prev, currentIssue) => {
-			prev[currentIssue.path.toString()] = currentIssue.message
-			return prev
-		}, {})
-	}
-	else {
-		errors.value = {}
-		const res = await $fetch('/api/create', {
-			method: 'POST',
-			body: formData,
-		})
+	const res = await $fetch('/api/create', {
+		method: 'POST',
+		body: form.value,
+	})
 
-		if (res.status === 200) emits('exit')
-	}
+	if (res.status === 200) emits('exit')
 }
 // #endregion
 
@@ -148,14 +141,14 @@ onClickOutside(modal, () => emits('exit'))
 							ref="nameField"
 							placeholder="Enter your name..."
 							:error="errors.name"
-							@input-change="(input) => nameInput = input"
+							@input-change="(name) => handleChange('name', name)"
 						/>
 					</RegistrationFormField>
 					<RegistrationFormField header="Email" icon="ic:round-alternate-email">
 						<EmailInput
 							placeholder="Enter your email..."
 							:error="errors.email"
-							@input-change="(input) => emailInput = input"
+							@input-change="(email) => handleChange('email', email)"
 						/>
 					</RegistrationFormField>
 					<RegistrationFormField header="School" icon="material-symbols:expand-circle-down-rounded">
@@ -166,7 +159,7 @@ onClickOutside(modal, () => emits('exit'))
 							:error="errors.school"
 							:transformer="(schools: any[]) => schools.map(({ name }) => name)"
 							@options-toggled="(isOptionsActive) => isOtherDialogsActive = isOptionsActive"
-							@option-selected="(school) => schoolSelection = school"
+							@option-selected="(school) => handleChange('school', school[0])"
 						/>
 					</RegistrationFormField>
 					<RegistrationFormField header="Workshops" icon="ph:list-bullets-bold">
@@ -177,12 +170,12 @@ onClickOutside(modal, () => emits('exit'))
 							:data="workshops"
 							:transformer="(workshops: any[]) => workshops.map(({ name }) => name)"
 							@options-toggled="(isOptionsActive) => isOtherDialogsActive = isOptionsActive"
-							@option-selected="(workshops) => workshopsSelection = workshops"
+							@option-selected="(workshops) => handleChange('workshops', workshops)"
 						/>
 					</RegistrationFormField>
 					<RegistrationFormField header="Joining" icon="material-symbols:check-box">
 						<div class="pl-0 sm:pl-1 p-1">
-							<Checkbox @checked="(value) => isJoining = value" />
+							<Checkbox @checked="(value) => handleChange('joining', value)" />
 						</div>
 					</RegistrationFormField>
 				</ul>
