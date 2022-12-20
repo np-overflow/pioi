@@ -118,7 +118,7 @@ whenever(ctrl_j, toggleModal)
 						<Icon size="48" name="file-icons:go" class="absolute left-1/2 -translate-x-1/2 -top-6" />
 						<div class="p-4 h-full flex flex-col items-center justify-center gap-3">
 							<h3 class="text-lg font-bold">
-								Go Lang
+								Go
 							</h3>
 							<p class="text-gray-400 font-medium">
 								1.19.4
