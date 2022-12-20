@@ -154,6 +154,6 @@ onClickOutside(optionsEl, toggleOptions)
 
 <style scoped>
 .error {
-    @apply outline-[0.5px] outline outline-[#fa5152] text-[#fa5152];
+    @apply outline-[0.5px] outline outline-[#fa5152] text-[#fa5152] text-xs sm:text-sm;
 }
 </style>

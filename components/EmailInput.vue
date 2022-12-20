@@ -31,6 +31,6 @@ const input = ref('')
 }
 
 .error::placeholder {
-    @apply text-[#fa5152]
+    @apply text-[#fa5152] text-xs sm:text-sm
 }
 </style>

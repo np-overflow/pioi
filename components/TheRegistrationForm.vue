@@ -19,9 +19,9 @@ const isOtherDialogsActive = ref(false)
 
 // #region Form
 const schema = z.object({
-	name: z.string().min(1, 'Name is required'),
+	name: z.string().min(1, 'Required!'),
 	email: z.string().email({ message: 'Invalid email' }),
-	school: z.string({ required_error: 'Select your school' }).min(1, 'Select your school'),
+	school: z.string({ required_error: 'Required!' }).min(1, 'Required!'),
 	workshops: z.string().array().optional(),
 	joining: z.boolean(),
 }).strict()
@@ -195,7 +195,7 @@ onClickOutside(modal, () => emits('exit'))
 						</NuxtLink>
 						of the event
 					</p>
-					<span class="absolute top-1/2 right-0 -translate-y-1/2 text-xs px-1 text-[#fa5152]">
+					<span class="absolute -bottom-1/2 sm:top-1/2 sm:-translate-y-1/2 right-0 text-xs sm:px-1 text-[#fa5152]">
 						{{ errors.toc }}
 					</span>
 				</div>
