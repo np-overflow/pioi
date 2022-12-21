@@ -19,7 +19,7 @@ const input = ref('')
 			:class="error ? 'error' : ''"
 			@change="() => emits('inputChange', input)"
 		>
-		<span class="absolute top-1/2 right-0 -translate-y-1/2 text-xs px-1 text-[#fa5152]">
+		<span v-if="error" class="absolute top-1/2 right-0 -translate-y-1/2 text-xs px-1 text-[#fa5152]">
 			{{ error }}
 		</span>
 	</div>

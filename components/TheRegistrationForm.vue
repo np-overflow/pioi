@@ -152,7 +152,7 @@ onClickOutside(modal, () => emits('exit'))
 						/>
 					</RegistrationFormField>
 					<RegistrationFormField header="School" icon="material-symbols:expand-circle-down-rounded">
-						<Select
+						<SingleSelect
 							placeholder="Select your school..."
 							:db="schoolsDb"
 							:data="schools"
@@ -163,9 +163,8 @@ onClickOutside(modal, () => emits('exit'))
 						/>
 					</RegistrationFormField>
 					<RegistrationFormField header="Workshops" icon="ph:list-bullets-bold">
-						<Select
+						<MultiSelect
 							placeholder="Leave empty if you do not wish to participate"
-							is-multiselect
 							:db="workshopsDb"
 							:data="workshops"
 							:transformer="(workshops: any[]) => workshops.map(({ name }) => name)"
@@ -188,7 +187,7 @@ onClickOutside(modal, () => emits('exit'))
 						</NuxtLink>
 						of the event
 					</p>
-					<span class="absolute -bottom-1/2 sm:top-1/2 sm:-translate-y-1/2 right-0 text-xs sm:px-1 text-[#fa5152]">
+					<span v-if="errors.toc" class="absolute -bottom-1/2 sm:top-1/2 sm:-translate-y-1/2 right-0 text-xs sm:px-1 text-[#fa5152]">
 						{{ errors.toc }}
 					</span>
 				</div>
