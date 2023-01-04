@@ -135,23 +135,23 @@ onClickOutside(modal, () => emits('exit'))
 				<h1 class="text-xl sm:text-3xl font-bold sm:mb-4">
 					Registration Form
 				</h1>
-				<ul class="space-y-1 sm:mb-4">
-					<RegistrationFormField header="Name" icon="gg:rename">
+				<ul class="space-y-1 sm:mb-2">
+					<FormField header="Name" icon="gg:rename">
 						<TextInput
 							ref="nameField"
 							placeholder="Enter your name..."
 							:error="errors.name"
 							@input-change="(name) => handleChange('name', name)"
 						/>
-					</RegistrationFormField>
-					<RegistrationFormField header="Email" icon="ic:round-alternate-email">
+					</FormField>
+					<FormField header="Email" icon="ic:round-alternate-email">
 						<EmailInput
 							placeholder="Enter your email..."
 							:error="errors.email"
 							@input-change="(email) => handleChange('email', email)"
 						/>
-					</RegistrationFormField>
-					<RegistrationFormField header="School" icon="material-symbols:expand-circle-down-rounded">
+					</FormField>
+					<FormField header="School" icon="material-symbols:expand-circle-down-rounded">
 						<SingleSelect
 							placeholder="Select your school..."
 							:db="schoolsDb"
@@ -161,8 +161,8 @@ onClickOutside(modal, () => emits('exit'))
 							@options-toggled="(isOptionsActive) => isOtherDialogsActive = isOptionsActive"
 							@option-selected="(school) => handleChange('school', school[0])"
 						/>
-					</RegistrationFormField>
-					<RegistrationFormField header="Workshops" icon="ph:list-bullets-bold">
+					</FormField>
+					<FormField header="Workshops" icon="ph:list-bullets-bold">
 						<MultiSelect
 							placeholder="Leave empty if you do not wish to participate"
 							:db="workshopsDb"
@@ -171,15 +171,20 @@ onClickOutside(modal, () => emits('exit'))
 							@options-toggled="(isOptionsActive) => isOtherDialogsActive = isOptionsActive"
 							@option-selected="(workshops) => handleChange('workshops', workshops)"
 						/>
-					</RegistrationFormField>
-					<RegistrationFormField header="Joining" icon="material-symbols:check-box">
+					</FormField>
+					<FormField header="Joining" icon="material-symbols:check-box">
 						<div class="pl-0 sm:pl-1 p-1">
 							<Checkbox @checked="(value) => handleChange('joining', value)" />
 						</div>
-					</RegistrationFormField>
+					</FormField>
 				</ul>
-				<div class="relative flex items-center gap-2">
-					<Checkbox class="min-w-fit" @checked="(value) => consentedToTOC = value" />
+				<div class="relative w-full p-1">
+					<span class="absolute w-[calc(100%+2rem)] sm:w-[calc(100%+3rem)] -left-4 sm:-left-6 border-t-[0.5px] border-white/20"></span>
+				</div>
+				<div class="flex text-white text-sm lg:text-base font-medium min-h-8 justify-start items-center gap-4 sm:mt-2">
+					<div class="flex items-center justify-start text-gray-300 gap-x-2 sm:mr-0 sm:min-w-[20%]">
+						<Checkbox class="" @checked="(value) => consentedToTOC = value" />
+					</div>
 					<p class="text-xs text-right">
 						I agree to the
 						<NuxtLink to="/terms-and-conditions.pdf" target="_blank" class="link text-cyan-400">
