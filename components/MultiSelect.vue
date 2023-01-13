@@ -22,6 +22,7 @@ const handleSelect = (selection: string) => {
 		currentSelection.value.push(selection)
 		currentSelection.value.sort()
 	}
+	emits('optionSelected', currentSelection.value)
 }
 </script>
 
