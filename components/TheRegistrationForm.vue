@@ -13,7 +13,7 @@ const form = ref<Record<string, any>>({
 	email: '',
 	school: '',
 	workshops: [],
-	joining: false,
+	joining: true,
 })
 
 const consentedToTOC = ref(false)
@@ -171,11 +171,6 @@ onClickOutside(modal, () => emits('exit'))
 							@options-toggled="(isOptionsActive) => isOtherDialogsActive = isOptionsActive"
 							@option-selected="(workshops) => handleChange('workshops', workshops)"
 						/>
-					</FormField>
-					<FormField header="Joining" icon="material-symbols:check-box">
-						<div class="pl-0 sm:pl-1 p-1">
-							<Checkbox @checked="(value) => handleChange('joining', value)" />
-						</div>
 					</FormField>
 				</ul>
 				<div class="relative w-full p-1">
