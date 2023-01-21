@@ -1,5 +1,5 @@
 <template>
-	<button v-bind="$attrs" class="glow cursor-pointer flex relative rounded-md bg-[#18181b]">
+	<button v-bind="$attrs" class="glow cursor-pointer flex h-fit relative rounded-md bg-[#18181b]">
 		<div class="content">
 			<slot />
 		</div>
