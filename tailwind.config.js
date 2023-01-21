@@ -21,6 +21,15 @@ module.exports = {
 			fontFamily: {
 				sans: ['darkmode-mono-on', ...defaultTheme.fontFamily.sans],
 			},
+			keyframes: {
+				expand: {
+					'0%': { transform: 'scale(1)' },
+					'100%': { transform: 'scale(1.05)' },
+				}
+			},
+			animation: {
+				expand: 'expand 0.5s ease-in-out',
+			}
 		},
 	},
 }
