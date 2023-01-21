@@ -88,9 +88,8 @@ watch(triggerFocused, handleTriggerFocus)
 whenever(escape, handleEscape)
 onClickOutside(options, handleEscape)
 
-const unmount = useEventListener('focusin', (e: FocusEvent) => {
-	if (options.value?.contains(document.activeElement)) return
-	handleEscape()
+const unmount = useEventListener('focusin', () => {
+	if (!options.value?.contains(document.activeElement)) return handleEscape()
 })
 
 onBeforeUnmount(unmount)
@@ -102,7 +101,7 @@ onBeforeUnmount(unmount)
 		<div ref="trigger" tabindex="0" class="text-gray-400 w-full rounded focus:bg-[#18181b] hover:bg-[#18181b] pl-0 sm:pl-1 p-1" :class="error ? 'error' : ''">
 			<slot />
 		</div>
-		<span v-if="error" class="absolute top-1/2 right-0 -translate-y-1/2 text-xs px-1 text-[#fa5152]">
+		<span v-if="error" class="absolute top-1/2 right-0 -translate-y-1/2 text-xs px-1 text-error">
 			{{ error }}
 		</span>
 		<div v-if="isOptionsActive" class="absolute top-0 z-20 w-full rounded bg-[#0a0a06] border-[0.5px] border-white/20 scale-105 animate-expand">
@@ -142,6 +141,6 @@ onBeforeUnmount(unmount)
 
 <style scoped>
 .error {
-    @apply outline-[0.5px] outline outline-[#fa5152] text-[#fa5152] text-xs sm:text-sm;
+    @apply outline-[0.5px] outline outline-error text-error text-xs sm:text-sm;
 }
 </style>

@@ -209,7 +209,7 @@ onClickOutside(modal, () => emits('exit'))
                             </NuxtLink>
                             of the event
                         </p>
-                        <span v-if="errors.toc" class="absolute -bottom-1/2 sm:top-1/2 sm:-translate-y-1/2 right-0 text-xs sm:px-1 text-[#fa5152]">
+                        <span v-if="errors.toc" class="absolute -bottom-1/2 sm:top-1/2 sm:-translate-y-1/2 right-0 text-xs sm:px-1 text-error">
 						{{ errors.toc }}
 					</span>
                     </div>

@@ -20,7 +20,7 @@ const input = ref('')
 			:class="error ? 'error' : ''"
 			@change="() => emits('inputChange', input)"
 		>
-		<span v-if="error" class="absolute top-1/2 right-0 -translate-y-1/2 text-xs px-1 text-[#fa5152]">
+		<span v-if="error" class="absolute top-1/2 right-0 -translate-y-1/2 text-xs px-1 text-error">
 			{{ error }}
 		</span>
 	</div>
@@ -28,10 +28,10 @@ const input = ref('')
 
 <style scoped>
 .error {
-    @apply outline-[0.5px] outline outline-[#fa5152] text-[#fa5152];
+    @apply outline-[0.5px] outline outline-error text-error;
 }
 
 .error::placeholder {
-    @apply text-[#fa5152] text-xs sm:text-sm
+    @apply text-error text-xs sm:text-sm
 }
 </style>

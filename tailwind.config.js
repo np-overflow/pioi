@@ -29,6 +29,9 @@ module.exports = {
 			},
 			animation: {
 				expand: 'expand 0.5s ease-in-out',
+			},
+			colors: {
+				error: '#fa5152'
 			}
 		},
 	},
