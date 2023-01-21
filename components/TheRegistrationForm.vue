@@ -159,6 +159,7 @@ onClickOutside(modal, () => emits('exit'))
                     <ul class="space-y-1 sm:mb-2">
                         <FormField header="Name" icon="gg:rename">
                             <TextInput
+                                tabindex="0"
                                 ref="nameField"
                                 placeholder="Enter your name..."
                                 :error="errors.name"

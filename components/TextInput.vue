@@ -10,10 +10,11 @@ const input = ref('')
 </script>
 
 <template>
-	<div class="relative flex flex-col w-full">
+	<div class="relative flex flex-col w-full focus:outline-0">
 		<input
 			v-model="input"
-			class="w-full bg-transparent hover:bg-[#141418] rounded focus:outline-0 pl-0 sm:pl-1 p-1"
+			tabindex="0"
+			class="w-full bg-transparent focus:bg-[#141418] focus:scale-105 transition-all ease-in-out duration-300 hover:bg-[#141418] rounded focus:outline-0 pl-0 sm:pl-1 p-1"
 			type="text"
 			:placeholder="placeholder ? placeholder : 'Empty...'"
 			:class="error ? 'error' : ''"
