@@ -84,9 +84,14 @@ const workshopsDb = ref(create({
 const schools = ref<any[]>([])
 const workshops = ref<any[]>([])
 
+onBeforeUnmount(() => {
+    document.querySelector('#cf-script')?.remove()
+})
+
 onMounted(async () => {
     const newScript = document.createElement('script');
     newScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+    newScript.id = 'cf-script'
     document.body.appendChild(newScript);
 
     const { schools: schoolsData, workshops: workshopsData } = await queryContent('form').findOne()
