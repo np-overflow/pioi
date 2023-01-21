@@ -198,7 +198,7 @@ onClickOutside(modal, () => emits('exit'))
                     <div class="relative w-full p-1">
                         <span class="absolute w-[calc(100%+2rem)] sm:w-[calc(100%+3rem)] -left-4 sm:-left-6 border-t-[0.5px] border-white/20"></span>
                     </div>
-                    <div class="flex text-white text-sm lg:text-base font-medium min-h-8 justify-start items-center gap-4 sm:mt-2">
+                    <div class="relative flex text-white text-sm lg:text-base font-medium min-h-8 justify-start items-center gap-4 sm:mt-2">
                         <div class="flex items-center justify-start text-gray-300 gap-x-2 sm:mr-0 sm:min-w-[20%]">
                             <Checkbox class="" @checked="(value) => consentedToTOC = value" />
                         </div>
