@@ -2,6 +2,12 @@
 import { create, insert } from '@lyrasearch/lyra'
 import * as z from 'zod'
 
+const {
+    public: {
+        turnstileSiteKey
+    }
+} = useRuntimeConfig()
+
 // #region Refs & Emits
 const emits = defineEmits(['exit'])
 
@@ -36,7 +42,7 @@ const handleChange = async(key: string, input: any) => {
 	form.value[key] = input
 }
 
-const handleSubmission = async () => {
+const handleSubmission = async (event: Event) => {
 	if (!consentedToTOC.value) {
 		errors.value.toc = 'You must agree to the TOC'
 		return
@@ -46,9 +52,14 @@ const handleSubmission = async () => {
 
 	if (Object.keys(errors.value).length > 0) return
 
+    const turnstile = new FormData(event.currentTarget as HTMLFormElement).get('cf-turnstile-response')
+
 	const res = await $fetch('/api/create', {
 		method: 'POST',
-		body: form.value,
+		body: {
+            ...form.value,
+            turnstile
+        },
 	})
 
 	if (res.status === 200) emits('exit')
@@ -74,7 +85,11 @@ const schools = ref<any[]>([])
 const workshops = ref<any[]>([])
 
 onMounted(async () => {
-	const { schools: schoolsData, workshops: workshopsData } = await queryContent('form').findOne()
+    const newScript = document.createElement('script');
+    newScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+    document.body.appendChild(newScript);
+
+    const { schools: schoolsData, workshops: workshopsData } = await queryContent('form').findOne()
 
 	if (!schoolsData || !workshopsData)
 		return
@@ -135,65 +150,72 @@ onClickOutside(modal, () => emits('exit'))
 				<h1 class="text-xl sm:text-3xl font-bold sm:mb-4">
 					Registration Form
 				</h1>
-				<ul class="space-y-1 sm:mb-2">
-					<FormField header="Name" icon="gg:rename">
-						<TextInput
-							ref="nameField"
-							placeholder="Enter your name..."
-							:error="errors.name"
-							@input-change="(name) => handleChange('name', name)"
-						/>
-					</FormField>
-					<FormField header="Email" icon="ic:round-alternate-email">
-						<EmailInput
-							placeholder="Enter your email..."
-							:error="errors.email"
-							@input-change="(email) => handleChange('email', email)"
-						/>
-					</FormField>
-					<FormField header="School" icon="material-symbols:expand-circle-down-rounded">
-						<SingleSelect
-							placeholder="Select your school..."
-							:db="schoolsDb"
-							:data="schools"
-							:error="errors.school"
-							:transformer="(schools: any[]) => schools.map(({ name }) => name)"
-							@options-toggled="(isOptionsActive) => isOtherDialogsActive = isOptionsActive"
-							@option-selected="(school) => handleChange('school', school[0])"
-						/>
-					</FormField>
-					<FormField header="Workshops" icon="ph:list-bullets-bold">
-						<MultiSelect
-							placeholder="Leave empty if you do not wish to participate"
-							:db="workshopsDb"
-							:data="workshops"
-							:transformer="(workshops: any[]) => workshops.map(({ name }) => name)"
-							@options-toggled="(isOptionsActive) => isOtherDialogsActive = isOptionsActive"
-							@option-selected="(workshops) => handleChange('workshops', workshops)"
-						/>
-					</FormField>
-				</ul>
-				<div class="relative w-full p-1">
-					<span class="absolute w-[calc(100%+2rem)] sm:w-[calc(100%+3rem)] -left-4 sm:-left-6 border-t-[0.5px] border-white/20"></span>
-				</div>
-				<div class="flex text-white text-sm lg:text-base font-medium min-h-8 justify-start items-center gap-4 sm:mt-2">
-					<div class="flex items-center justify-start text-gray-300 gap-x-2 sm:mr-0 sm:min-w-[20%]">
-						<Checkbox class="" @checked="(value) => consentedToTOC = value" />
-					</div>
-					<p class="text-xs text-right">
-						I agree to the
-						<NuxtLink to="/terms-and-conditions.pdf" target="_blank" class="link text-cyan-400">
-							terms & conditions
-						</NuxtLink>
-						of the event
-					</p>
-					<span v-if="errors.toc" class="absolute -bottom-1/2 sm:top-1/2 sm:-translate-y-1/2 right-0 text-xs sm:px-1 text-[#fa5152]">
+                <form @submit.prevent="handleSubmission">
+                    <ul class="space-y-1 sm:mb-2">
+                        <FormField header="Name" icon="gg:rename">
+                            <TextInput
+                                ref="nameField"
+                                placeholder="Enter your name..."
+                                :error="errors.name"
+                                @input-change="(name) => handleChange('name', name)"
+                            />
+                        </FormField>
+                        <FormField header="Email" icon="ic:round-alternate-email">
+                            <EmailInput
+                                placeholder="Enter your email..."
+                                :error="errors.email"
+                                @input-change="(email) => handleChange('email', email)"
+                            />
+                        </FormField>
+                        <FormField header="School" icon="material-symbols:expand-circle-down-rounded">
+                            <SingleSelect
+                                placeholder="Select your school..."
+                                :db="schoolsDb"
+                                :data="schools"
+                                :error="errors.school"
+                                :transformer="(schools: any[]) => schools.map(({ name }) => name)"
+                                @options-toggled="(isOptionsActive) => isOtherDialogsActive = isOptionsActive"
+                                @option-selected="(school) => handleChange('school', school[0])"
+                            />
+                        </FormField>
+                        <FormField header="Workshops" icon="ph:list-bullets-bold">
+                            <MultiSelect
+                                placeholder="Leave empty if you do not wish to participate"
+                                :db="workshopsDb"
+                                :data="workshops"
+                                :transformer="(workshops: any[]) => workshops.map(({ name }) => name)"
+                                @options-toggled="(isOptionsActive) => isOtherDialogsActive = isOptionsActive"
+                                @option-selected="(workshops) => handleChange('workshops', workshops)"
+                            />
+                        </FormField>
+                    </ul>
+                    <div class="relative w-full p-1">
+                        <span class="absolute w-[calc(100%+2rem)] sm:w-[calc(100%+3rem)] -left-4 sm:-left-6 border-t-[0.5px] border-white/20"></span>
+                    </div>
+                    <div class="flex text-white text-sm lg:text-base font-medium min-h-8 justify-start items-center gap-4 sm:mt-2">
+                        <div class="flex items-center justify-start text-gray-300 gap-x-2 sm:mr-0 sm:min-w-[20%]">
+                            <Checkbox class="" @checked="(value) => consentedToTOC = value" />
+                        </div>
+                        <p class="text-xs text-right">
+                            I agree to the
+                            <NuxtLink to="/terms-and-conditions.pdf" target="_blank" class="link text-cyan-400">
+                                terms & conditions
+                            </NuxtLink>
+                            of the event
+                        </p>
+                        <span v-if="errors.toc" class="absolute -bottom-1/2 sm:top-1/2 sm:-translate-y-1/2 right-0 text-xs sm:px-1 text-[#fa5152]">
 						{{ errors.toc }}
 					</span>
-				</div>
-				<Button class="w-fit mt-4" @click="handleSubmission">
-					Join!
-				</Button>
+                    </div>
+
+                    <div class="flex flex-col-reverse md:flex-row justify-between items-center mt-6">
+                        <Button class="w-fit mt-4" type="submit">
+                            Join!
+                        </Button>
+
+                        <div class="cf-turnstile" :data-sitekey="turnstileSiteKey"></div>
+                    </div>
+                </form>
 			</div>
 		</GlowWrapper>
 	</div>

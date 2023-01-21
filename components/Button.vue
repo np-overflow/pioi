@@ -1,13 +1,9 @@
-<script setup lang="ts">
-const target = ref(null)
-</script>
-
 <template>
-	<div ref="target" class="glow cursor-pointer flex relative rounded-md bg-[#18181b]">
+	<button v-bind="$attrs" class="glow cursor-pointer flex relative rounded-md bg-[#18181b]">
 		<div class="content">
 			<slot />
 		</div>
-	</div>
+	</button>
 </template>
 
 <style scoped>
