@@ -25,7 +25,6 @@ const {
 
 // #region Refs
 const isOptionsActive = ref(false)
-const wasEscapeCalled = ref(false)
 const wasToggleCalled = ref(false)
 const options = ref<HTMLDivElement | null>(null)
 const trigger = ref<HTMLDivElement | null>(null)
@@ -44,21 +43,12 @@ const toggleOptions = () => {
 
 const handleTriggerFocus = (isFocused: boolean) => {
 	if (wasToggleCalled.value) return wasToggleCalled.value = false
-	if (wasEscapeCalled.value) return wasEscapeCalled.value = false
 	if (isFocused && !isOptionsActive.value) return toggleOptions()
-}
-
-const handleInputFocus = (isFocused: boolean) => {
-	if (isFocused) return
-	handleEscape()
-	if (shift.value || !tab.value) return
-	wasEscapeCalled.value = false
 }
 
 const handleEscape = () => {
 	if (!isOptionsActive.value) return
 	isOptionsActive.value = false
-	wasEscapeCalled.value = true
 	emits('optionsToggled', false)
 }
 
@@ -90,14 +80,20 @@ watch(search, (newVal) => {
 // #endregion
 
 // #region Interactivity
-const { escape, shift, tab } = useMagicKeys()
+const { escape } = useMagicKeys()
 
-const { focused: inputFocused } = useFocus(input, { initialValue: true })
+useFocus(input, { initialValue: true })
 const { focused: triggerFocused } = useFocus(trigger)
-watch(inputFocused, handleInputFocus)
 watch(triggerFocused, handleTriggerFocus)
 whenever(escape, handleEscape)
 onClickOutside(options, handleEscape)
+
+const unmount = useEventListener('focusin', (e: FocusEvent) => {
+	if (options.value?.contains(document.activeElement)) return
+	handleEscape()
+})
+
+onBeforeUnmount(unmount)
 // #endregion
 </script>
 
