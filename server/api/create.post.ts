@@ -35,12 +35,12 @@ export default defineEventHandler(async (event) => {
         equals: email
       }
     }
-  })
+  }).then(({ results }) => results.length > 0) 
 
   if (hasRegistered) {
     throw createError({
       statusCode: 409,
-      statusMessage: 'User has already registered!'
+      statusMessage: 'You have already registered!'
     })
   }
 
@@ -78,10 +78,11 @@ export default defineEventHandler(async (event) => {
       },
     })
   } catch (e) {
-    return {status: 404, e}
+    return {status: 404, statusMessage: e}
   }
 
   return {
     status: 200,
+    statusMessage: 'OK',
   }
 })
