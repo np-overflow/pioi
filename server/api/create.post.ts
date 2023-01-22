@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
   if (hasRegistered) {
     throw createError({
       statusCode: 409,
-      statusMessage: 'You have already registered!'
+      statusMessage: 'Already registered!'
     })
   }
 
@@ -78,11 +78,14 @@ export default defineEventHandler(async (event) => {
       },
     })
   } catch (e) {
-    return {status: 404, statusMessage: e}
+    throw createError({
+      statusCode: 404,
+      statusMessage: `Error: ${e}`
+    })
   }
 
   return {
-    status: 200,
+    statusCode: 200,
     statusMessage: 'OK',
   }
 })

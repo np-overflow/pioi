@@ -43,10 +43,7 @@ const handleChange = async(key: string, input: any) => {
 }
 
 const handleSubmission = async (event: Event) => {
-	if (!consentedToTOC.value) {
-		errors.value.toc = 'You must agree to the TOC'
-		return
-	}
+	if (!consentedToTOC.value) return errors.value.validations = 'You must agree to the TOC'
 
 	errors.value = await getZodErrors(schema, form.value)
 
@@ -54,7 +51,7 @@ const handleSubmission = async (event: Event) => {
 
     const turnstile = new FormData(event.currentTarget as HTMLFormElement).get('cf-turnstile-response')
 
-	const res = await $fetch('/api/create', {
+	const { data, error } = await useFetch('/api/create', {
 		method: 'POST',
 		body: {
             ...form.value,
@@ -62,7 +59,8 @@ const handleSubmission = async (event: Event) => {
         },
 	})
 
-	if (res.status === 200) emits('exit')
+    if (error.value) return errors.value.validations = error.value?.statusMessage || 'Something went wrong'
+	if (data.value?.statusCode === 200) emits('exit')
 }
 // #endregion
 
@@ -209,9 +207,9 @@ onClickOutside(modal, () => emits('exit'))
                             </NuxtLink>
                             of the event
                         </p>
-                        <span v-if="errors.toc" class="absolute -bottom-1/2 sm:top-1/2 sm:-translate-y-1/2 right-0 text-xs sm:px-1 text-error">
-						{{ errors.toc }}
-					</span>
+                        <span v-if="errors.validations" class="absolute flex items-center -bottom-1/2 sm:top-1/2 sm:-translate-y-1/2 right-0 text-xs sm:px-1 text-error">
+						    {{ errors.validations }}
+					    </span>
                     </div>
 
                     <div class="flex flex-col-reverse md:flex-row justify-between items-center mt-6">
