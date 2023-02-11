@@ -59,7 +59,7 @@ whenever(ctrl_j, toggleModal)
 			<div class="flex flex-col-reverse sm:flex-row items-center justify-center gap-4">
 				<Chip class="sm:text-sm">
 					<Icon name="line-md:calendar" class="text-[#8c8c93]" />
-					11 Mar 2023, 8am - 6pm
+					11 Mar 2023, 10am - 6pm
 				</Chip>
 				<Chip class="sm:text-sm">
 					<Icon name="gis:location-poi" class="text-[#8c8c93]" />

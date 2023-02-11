@@ -20,6 +20,7 @@ const form = ref<Record<string, any>>({
 	school: '',
 	workshops: [],
 	joining: true,
+    vegetarian: false,
 })
 
 const consentedToTOC = ref(false)
@@ -33,6 +34,7 @@ const schema = z.object({
 	school: z.string({ required_error: 'Required!' }).min(1, 'Required!'),
 	workshops: z.string().array().optional(),
 	joining: z.boolean(),
+    vegetarian: z.boolean(),
 }).strict()
 
 const errors = ref<Record<string, string>>({})
@@ -191,6 +193,11 @@ onClickOutside(modal, () => emits('exit'))
                                 @options-toggled="(isOptionsActive) => isOtherDialogsActive = isOptionsActive"
                                 @option-selected="(workshops) => handleChange('workshops', workshops)"
                             />
+                        </FormField>
+                        <FormField header="Vegetarian" icon="bx:leaf">
+                            <div class="pl-0 sm:pl-1 p-1">
+                                <Checkbox @checked="(value) => handleChange('vegetarian', value)" />
+                            </div>
                         </FormField>
                     </ul>
                     <div class="relative w-full p-1">

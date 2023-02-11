@@ -5,7 +5,7 @@ const {turnstileSecretKey} = useRuntimeConfig()
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
 
-  const {name, email, school, joining, workshops, turnstile} = body
+  const {name, email, school, joining, workshops, vegetarian, turnstile} = body
   const ip = event.req.headers["CF-Connecting-IP"]
 
   const formData = new FormData();
@@ -69,6 +69,9 @@ export default defineEventHandler(async (event) => {
         },
         Joining: {
           checkbox: joining,
+        },
+        Vegetarian: {
+          checkbox: vegetarian,
         },
         Workshops: {
           multi_select: workshops.length > 0 ? workshops.map((day: string) => {
