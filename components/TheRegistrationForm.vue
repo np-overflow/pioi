@@ -150,7 +150,7 @@ onClickOutside(modal, () => emits('exit'))
         backdrop-blur-md
         flex justify-center"
 	>
-		<GlowWrapper class="relative w-full max-w-3xl my-auto">
+		<GlowWrapper class="relative w-full max-w-3xl mt-12 sm:mt-32 md:mt-36 lg:mt-48">
 			<div ref="modal" class="modal text-white relative flex flex-col gap-2 rounded-lg shadow-lg backdrop-blur-lg bg-[#0c0c0c] p-4 sm:p-6 z-40">
 				<h1 class="text-xl sm:text-3xl font-bold sm:mb-4">
 					Registration Form
