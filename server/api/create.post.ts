@@ -73,6 +73,9 @@ export default defineEventHandler(async (event) => {
         Vegetarian: {
           checkbox: vegetarian,
         },
+        Duplicate: {
+          checkbox: false,
+        },
         Workshops: {
           multi_select: workshops.length > 0 ? workshops.map((day: string) => {
             return {name: day.toString().toUpperCase()}
