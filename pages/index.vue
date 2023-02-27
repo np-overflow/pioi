@@ -1,26 +1,13 @@
 <script setup lang="ts">
 const isModalActive = ref(false)
 
-const toggleModal = () => {
-	isModalActive.value = !isModalActive.value
-	useHead({
-		bodyAttrs: {
-			class: '',
-		},
-	})
-	useHead({
-		bodyAttrs: {
-			class: isModalActive.value ? 'overflow-hidden bg-[#0c0c0c]' : 'overflow-auto bg-[#0c0c0c]',
-		},
-	})
-}
+const toggleModal = () => isModalActive.value = !isModalActive.value
 
 const { ctrl_j } = useMagicKeys({
 	passive: false,
 	onEventFired(e) {
 		const isCtrl_j = e.ctrlKey && e.key === 'j'
-		if (isCtrl_j && e.type === 'keydown')
-			e.preventDefault()
+		if (isCtrl_j && e.type === 'keydown') e.preventDefault()
 	},
 })
 
@@ -219,9 +206,7 @@ whenever(ctrl_j, toggleModal)
 						</div>
 						<div class="inline-flex justify-end">
 							<Button class="text-white/70" @click="toggleModal">
-								Join
-								<KBD>Ctrl</KBD>
-								<KBD>J</KBD>
+								Closed!
 							</Button>
 						</div>
 					</div>

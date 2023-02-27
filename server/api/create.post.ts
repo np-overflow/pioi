@@ -3,6 +3,11 @@ import {dbID, notion} from '../lib/notion'
 const {turnstileSecretKey} = useRuntimeConfig()
 
 export default defineEventHandler(async (event) => {
+  throw createError({
+    statusCode: 418,
+    statusMessage: 'I\'m a teapot'
+  })
+
   const body = await readBody(event)
 
   const {name, email, school, joining, workshops, vegetarian, turnstile} = body

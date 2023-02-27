@@ -150,9 +150,9 @@ onClickOutside(modal, () => emits('exit'))
         backdrop-blur-md
         flex justify-center"
 	>
-		<GlowWrapper class="relative w-full max-w-3xl mt-12 sm:mt-32 md:mt-36 lg:mt-48">
+		<GlowWrapper class="relative w-full max-w-2xl xl:max-w-3xl mt-12 sm:mt-32 md:mt-36 lg:mt-48">
 			<div ref="modal" class="modal text-white relative flex flex-col gap-2 rounded-lg shadow-lg backdrop-blur-lg bg-[#0c0c0c] p-4 sm:p-6 z-40">
-				<h1 class="text-xl sm:text-3xl font-bold sm:mb-4">
+				<!-- <h1 class="text-xl sm:text-3xl font-bold sm:mb-4">
 					Registration Form
 				</h1>
                 <form @submit.prevent="handleSubmission">
@@ -226,7 +226,10 @@ onClickOutside(modal, () => emits('exit'))
 
                         <div class="cf-turnstile" :data-sitekey="turnstileSiteKey"></div>
                     </div>
-                </form>
+                </form> -->
+                <div class="inline-flex justify-center items-center">
+                    <h1 class="py-24 text-xl sm:text-3xl font-bold">Registration closed!</h1>
+                </div>
 			</div>
 		</GlowWrapper>
 	</div>
