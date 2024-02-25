@@ -24,7 +24,7 @@ devDependencies:
   nuxt: 3.7.0_fqkhc46sqkbz5wl5tqkjmuz5ma
   nuxt-icon: 0.5.0
   typescript: 5.0.4
-  zod: 3.20.2
+  zod: 3.22.4
 
 packages:
 
@@ -8141,8 +8141,8 @@ packages:
       readable-stream: 3.6.0
     dev: true
 
-  /zod/3.20.2:
-    resolution: {integrity: sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==}
+  /zod/3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: true
 
   /zwitch/2.0.4:
