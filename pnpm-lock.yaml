@@ -14,7 +14,7 @@ specifiers:
   zod: ^3.20.2
 
 devDependencies:
-  '@lyrasearch/lyra': 0.4.2
+  '@lyrasearch/lyra': 0.4.12
   '@notionhq/client': 2.2.3
   '@nuxt/content': 2.3.0
   '@nuxtjs/tailwindcss': 6.2.0
@@ -1056,9 +1056,10 @@ packages:
       - supports-color
     dev: true
 
-  /@lyrasearch/lyra/0.4.2:
-    resolution: {integrity: sha512-dpP+qQ0EQJDxpm3JiJXJlBV1SMYtRDAnCQkBrNVyT+ltQZN8AwK738PKYEw9Yej8Hhduz9mSY/6PBd93mGandA==}
+  /@lyrasearch/lyra/0.4.12:
+    resolution: {integrity: sha512-7lcUALhAKUhC4p8h6JJRuZFrOHzNxq0uEgHzTSIAXYfFufA2X0BfBDPABlrFwgJ5GP+LwmjMet2rS3XHvG9xNg==}
     engines: {node: '>= 16.0.0'}
+    deprecated: Lyra is now called Orama! Install the latest stable version via the @orama/orama package
     dev: true
 
   /@mapbox/node-pre-gyp/1.0.10:
